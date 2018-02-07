@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { reduxForm, Field } from "redux-form";
+import { reduxForm, Field, formValueSelector } from "redux-form";
 import { connect } from "react-redux";
 
 import Steppers from "../common/stepper";
@@ -27,6 +27,31 @@ class SignupForm extends Component {
           {...input}
           errorText={touched && error}
         />
+      </div>
+    );
+  }
+
+  renderSpecialty() {
+    return (
+      <div>
+        <Field
+          name="specialty"
+          component={this.renderSelectField}
+          label="Your specialty"
+        >
+          <MenuItem value="everything" primaryText="i know everything" />
+          <MenuItem value="skin" primaryText="skin care" />
+          <MenuItem value="eyes" primaryText="eyes" />
+          <MenuItem value="ears" primaryText="ears" />
+        </Field>
+        <RaisedButton
+          label="Upload your medical practice license"
+          labelPosition="before"
+          style={styles.button}
+          containerElement="label"
+        >
+          <input type="file" style={styles.exampleImageInput} />
+        </RaisedButton>
       </div>
     );
   }
@@ -70,6 +95,7 @@ class SignupForm extends Component {
   }
 
   render() {
+    console.log(this.props.role);
     return (
       <div>
         <Steppers />
@@ -96,19 +122,22 @@ class SignupForm extends Component {
             {this.renderForm()}
             <DatePicker hintText="Your birth date" mode="landscape" />
             <Field
-              name="height"
+              name="role"
               component={this.renderSelectField}
-              label="Your height"
+              label="Your role"
             >
-              <MenuItem value="1" primaryText="150cm - 170cm" />
-              <MenuItem value="2" primaryText="170cm - 190cm" />
-              <MenuItem value="3" primaryText="190cm + " />
+              <MenuItem value="user" primaryText="Normal user" />
+              <MenuItem value="doctor" primaryText="doctor" />
+              <MenuItem value="nurse" primaryText="nurse" />
             </Field>
+            {this.props.role === "doctor" || this.props.role === "nurse"
+              ? this.renderSpecialty()
+              : null}
             <div className="checkbox">
               <Field
-                name="hanase"
+                name="agreement"
                 component={this.renderCheckbox}
-                label="Ysasome?"
+                label="Do you agree to your term of service?"
               />
             </div>
             <div className="btn-group">
@@ -139,16 +168,12 @@ const validate = values => {
     }
   });
 
-  if (!values["height"]) {
-    errors["height"] = "select something";
+  if (!values["role"]) {
+    errors["role"] = "select your role";
   }
 
-  if (values["height"] && values["height"] != "3") {
-    errors["height"] = "Youassub";
-  }
-
-  if (!values["handsome"]) {
-    errors["handsome"] = "seasase";
+  if (!values["agreement"]) {
+    errors["agreement"] = "You must agree to your term of service";
   }
 
   return errors;
@@ -170,8 +195,21 @@ const styles = {
   }
 };
 
-export default reduxForm({
+SignupForm = reduxForm({
   form: "signupForm",
   validate,
   destroyOnUnmount: false
 })(SignupForm);
+
+const selector = formValueSelector("signupForm");
+SignupForm = connect(state => {
+  // can select values individually
+  const username = selector(state, "username");
+  const role = selector(state, "role");
+  return {
+    username,
+    role
+  };
+})(SignupForm);
+
+export default SignupForm;

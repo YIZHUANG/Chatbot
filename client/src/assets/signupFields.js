@@ -12,15 +12,9 @@ export default [
     error: "Please enter password"
   },
   {
-    label: "firstname",
+    label: "address",
     type: "text",
-    name: "firstname",
-    error: "Please enter firstname"
+    name: "address",
+    error: "Please enter address"
   },
-  {
-    label: "lastname",
-    type: "text",
-    name: "lastname",
-    error: "Please enter lastname"
-  }
 ];

@@ -37,7 +37,7 @@ module.exports = (app, passport) => {
           } else {
             var newUser = new User();
             newUser.google.googleId = profile.id;
-            newUser.google.name = profile.displayName;
+            newUser.username = profile.displayName;
             newUser.google.email = profile.emails[0].value;
             newUser.save(error => {
               if (error) {

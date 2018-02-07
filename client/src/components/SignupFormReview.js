@@ -10,16 +10,23 @@ import ActionHome from "material-ui/svg-icons/action/home";
 import ContentSend from "material-ui/svg-icons/content/send";
 import ContentDrafts from "material-ui/svg-icons/content/drafts";
 
-const SignupFormReview = ({ formValues, onCancel, history, signUp }) => {
-  const { firstname, lastname, height, handsome } = formValues;
+const SignupFormReview = ({
+  formValues,
+  onCancel,
+  history,
+  signUp,
+  signupError
+}) => {
+  const { username, role, address } = formValues;
+  console.log(signupError);
   const list = (
     <div>
-      <label className="review_label">Firstname</label>
-      <div className="review_text">{firstname}</div>
-      <label className="review_label">LastName</label>
-      <div className="review_text">{lastname}</div>
-      <label className="review_label">Your height</label>
-      <div className="review_text">{height}</div>
+      <label className="review_label">username</label>
+      <div className="review_text">{username}</div>
+      <label className="review_label">address</label>
+      <div className="review_text">{address}</div>
+      <label className="review_label">Your role</label>
+      <div className="review_text">{role}</div>
     </div>
   );
   return (
@@ -38,7 +45,7 @@ const SignupFormReview = ({ formValues, onCancel, history, signUp }) => {
           <RaisedButton
             primary={true}
             label="Send"
-            onClick={()=>signUp(formValues,history)}
+            onClick={() => signUp(formValues, history)}
             icon={<ContentSend />}
           />
         </div>
@@ -48,7 +55,13 @@ const SignupFormReview = ({ formValues, onCancel, history, signUp }) => {
 };
 
 function mapStateToProps(state) {
-  return { formValues: state.form.signupForm.values };
+  const { signupError } = state.auth;
+  return {
+    formValues: state.form.signupForm.values,
+    signupError
+  };
 }
 
-export default connect(mapStateToProps,{ signUp })(withRouter(SignupFormReview));
+export default connect(mapStateToProps, { signUp })(
+  withRouter(SignupFormReview)
+);

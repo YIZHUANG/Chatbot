@@ -13,12 +13,12 @@ class Redirect extends Component {
   componentDidMount() {
     this.timer = setInterval(() => this.setTimer(), 1000);
     if (this.state.counter <= 0) {
-      this.props.history.push("/");
+      this.props.history.push("/DashBoard");
     }
   }
   componentWillUpdate() {
     if (this.state.counter <= 0) {
-      this.props.history.push("/");
+      this.props.history.push("/DashBoard");
     }
   }
 

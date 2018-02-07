@@ -8,9 +8,8 @@ module.exports = (app, passport) => {
   app.post("/api/signUp", (req, res) => {
     var username = req.body.username;
     var password = req.body.password;
-    var firstname = req.body.firstname;
-    var lastname = req.body.lastname;
-    var height = req.body.height;
+    var role = req.body.role;
+    var address = req.body.address;
     if (username && password) {
       //not null.
       User.findOne({ username: username }, (error, user) => {
@@ -24,9 +23,8 @@ module.exports = (app, passport) => {
             // a function that comes with passport-local-mongoose.
             new User({
               username: req.body.username,
-              firstname: req.body.firstname,
-              lastname: req.body.lastname,
-              height: req.body.height
+              role : req.body.role,
+              address : req.body.address
             }),
             req.body.password,
             (error, user) => {

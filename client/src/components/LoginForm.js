@@ -16,8 +16,15 @@ import Divider from "material-ui/Divider";
 import LoginFields from "../assets/loginFields";
 
 class LoginForm extends Component {
-  renderMaterialForm({ input, label }) {
-    return <TextField hintText={label} floatingLabelText={label} {...input} />;
+  renderMaterialForm({ input, label, meta: { error, touched } }) {
+    return (
+      <TextField
+        hintText={label}
+        errorText={touched && error}
+        floatingLabelText={label}
+        {...input}
+      />
+    );
   }
 
   onLogin(values) {
@@ -38,6 +45,7 @@ class LoginForm extends Component {
   }
 
   render() {
+    console.log(this.props.loginError);
     return (
       <div>
         <div className="loginForm_container">
@@ -54,6 +62,7 @@ class LoginForm extends Component {
               icon={<PersonAdd />}
             />
           </form>
+          {this.props.loginError}
           <span className="signup_noti">
             Not a member yet? Join us{" "}
             <Link className="link-to-signup" to="/SignupForm">
@@ -66,10 +75,28 @@ class LoginForm extends Component {
     );
   }
 }
+
+const validate = values => {
+  const errors = {};
+
+  LoginFields.forEach(item => {
+    if (!values[item.name]) {
+      errors[item.name] = item.error;
+    }
+  });
+
+  return errors;
+};
+
 function mapStateToProps(state) {
-  return { formValues: state.form.loginForm };
+  const { loginError } = state.auth;
+  return {
+    formValues: state.form.loginForm,
+    loginError
+  };
 }
 
 export default reduxForm({
-  form: "loginForm"
+  form: "loginForm",
+  validate
 })(connect(mapStateToProps, { signIn })(LoginForm));
