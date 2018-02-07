@@ -1,0 +1,74 @@
+.loginForm_container {
+  box-shadow: var(--color-green-session-color);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffdab9;
+  .loginForm {
+    margin: auto;
+    .loginForm_btn {
+      margin-left: 55px;
+    }
+  }
+  .link-to-signup {
+    text-decoration: none;
+  }
+
+  .signup_noti {
+    font-size: 1.4rem;
+    margin: auto;
+  }
+}
+
+.signupForm_container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffff99;
+  .signupForm {
+    margin: auto;
+    .signup_btn {
+      float: right;
+    }
+  }
+  .checkbox {
+    margin-top: 1rem;
+  }
+  .btn-group {
+    margin-top: 1rem;
+  }
+
+  .link-to-signup {
+    text-decoration: none;
+  }
+  .file_upload {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+  }
+}
+
+.review_container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffff99;
+  .review_content {
+    margin: auto;
+    .review_btn_cancel {
+      display: flex;
+      margin-right: 10px;
+    }
+  }
+  .review_label {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  .review_text {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+}
