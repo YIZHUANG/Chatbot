@@ -17,18 +17,16 @@ import LoginFields from "../assets/loginFields";
 
 import LoginForm from './LoginForm';
 const Login=()=> {
-
-
     return (
       <div>
         <div className="loginForm_container">
           <LoginForm />
-
           <span className="signup_noti">
             Not a member yet? Join us{" "}
             <Link className="link-to-signup" to="/SignupForm">
-              here
+              sadad
             </Link>
+            <a href="api/google">Google log in</a>
           </span>
         </div>
       </div>

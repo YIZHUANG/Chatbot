@@ -60,6 +60,7 @@ class LoginForm extends Component {
               here
             </Link>
           </span>
+          <a href="api/google">Google log in</a>
         </div>
       </div>
     );
