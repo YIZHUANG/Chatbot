@@ -1,16 +1,23 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchUser } from "../../actions";
 
-export default function (ComposedComponent) {
+export default function(ComposedComponent) {
   class Authentication extends Component {
-    render(){
-      return <ComposedComponent {...props} />
+    componentDidMount() {
+      this.props.fetchUser();
+    }
+
+    render() {
+      console.log(this.props.user);
+      return <ComposedComponent {...this.props} />;
     }
   }
 
   function mapStateToProps(state) {
-    return {authenticated: state.authenticated}
+    const { authenticated, user } = state.auth;
+    return { authenticated, user };
   }
 
-  return connect(mapStateToProps)(Authentication);
+  return connect(mapStateToProps, { fetchUser })(Authentication);
 }

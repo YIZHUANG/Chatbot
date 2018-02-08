@@ -8,10 +8,12 @@ import ReduxThunk from "redux-thunk";
 import { MuiThemeProvider, createMuiTheme } from "material-ui/styles";
 
 import DashBoard from "./components/DashBoard";
-import LoginForm from "./components/LoginForm";
-import SignUp from "./components/SignUp";
+import LoginForm from "./components/auth/LoginForm";
+import UpdateUser from "./components/user/updateUser";
+import SignupForm from "./components/auth/SignupForm";
 
 import Redirect from "./common/redirect";
+import require_auth from "./components/HOC/require_auth";
 
 const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 
@@ -23,8 +25,12 @@ class App extends Component {
           <BrowserRouter>
             <div className="container">
               <Switch>
-                <Route exact path="/DashBoard" component={DashBoard} />
-                <Route exact path="/SignupForm" component={SignUp} />
+                <Route
+                  exact
+                  path="/DashBoard"
+                  component={require_auth(DashBoard)}
+                />
+                <Route exact path="/SignupForm" component={SignupForm} />
                 <Route exact path="/" component={LoginForm} />
                 <Route exact path="/redirect" component={Redirect} />
               </Switch>

@@ -2,20 +2,30 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
-import { signIn } from "../actions";
+import { signIn, fetchUser } from "../../actions";
 
 import FlatButton from "material-ui/FlatButton";
 import FontIcon from "material-ui/FontIcon";
 import ActionAndroid from "material-ui/svg-icons/action/android";
 import TextField from "material-ui/TextField";
-import Header from "./Header";
+import Header from "../Header";
 import RaisedButton from "material-ui/RaisedButton";
 import PersonAdd from "material-ui/svg-icons/social/person-add";
 import Divider from "material-ui/Divider";
 
-import LoginFields from "../assets/loginFields";
+import LoginFields from "../../assets/loginFields";
 
 class LoginForm extends Component {
+  componentWillMount() {
+    this.props.fetchUser();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.user.username) {
+      this.props.history.push("/DashBoard");
+    }
+  }
+
   renderMaterialForm({ input, label, meta: { error, touched } }) {
     return (
       <TextField
@@ -89,14 +99,15 @@ const validate = values => {
 };
 
 function mapStateToProps(state) {
-  const { loginError } = state.auth;
+  const { loginError, user } = state.auth;
   return {
     formValues: state.form.loginForm,
-    loginError
+    loginError,
+    user
   };
 }
 
 export default reduxForm({
   form: "loginForm",
   validate
-})(connect(mapStateToProps, { signIn })(LoginForm));
+})(connect(mapStateToProps, { signIn, fetchUser })(LoginForm));

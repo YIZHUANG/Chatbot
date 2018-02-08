@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { reduxForm, Field, formValueSelector } from "redux-form";
 import { connect } from "react-redux";
 
-import Steppers from "../common/stepper";
+import Steppers from "../../common/stepper";
 
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
@@ -14,10 +14,10 @@ import DatePicker from "material-ui/DatePicker";
 import RemoveRedEye from "material-ui/svg-icons/image/remove-red-eye";
 import FlatButton from "material-ui/FlatButton";
 
-import SignupFields from "../assets/signupFields";
-import LoginFields from "../assets/loginFields";
+import SignupFields from "../../assets/signupFields";
+import LoginFields from "../../assets/loginFields";
 
-class SignupForm extends Component {
+class EditForm extends Component {
   renderTextField({ input, label, meta: { error, touched } }) {
     return (
       <div>
@@ -33,7 +33,7 @@ class SignupForm extends Component {
 
   renderSpecialty() {
     return (
-      <div>
+      <div className="specialty">
         <Field
           name="specialty"
           component={this.renderSelectField}
@@ -45,7 +45,7 @@ class SignupForm extends Component {
           <MenuItem value="ears" primaryText="ears" />
         </Field>
         <RaisedButton
-          label="Upload your medical practice license"
+          label="Upload  license"
           labelPosition="before"
           style={styles.button}
           containerElement="label"
@@ -98,11 +98,11 @@ class SignupForm extends Component {
     console.log(this.props.role);
     return (
       <div>
-        <Steppers />
         <div className="signupForm_container">
+          <div>Update your profile</div>
           <form
             className="signupForm"
-            onSubmit={this.props.handleSubmit(this.props.onEmailSubmit)}
+            onSubmit={this.props.handleSubmit(this.props.onSubmit)}
           >
             <div className="file_upload">
               <img
@@ -133,13 +133,6 @@ class SignupForm extends Component {
             {this.props.role === "doctor" || this.props.role === "nurse"
               ? this.renderSpecialty()
               : null}
-            <div className="checkbox">
-              <Field
-                name="agreement"
-                component={this.renderCheckbox}
-                label="Do you agree to your term of service?"
-              />
-            </div>
             <div className="btn-group">
               <Link to="/">
                 <RaisedButton label="Cancel" primary={true} />
@@ -172,16 +165,12 @@ const validate = values => {
     errors["role"] = "select your role";
   }
 
-  if (!values["agreement"]) {
-    errors["agreement"] = "You must agree to your term of service";
-  }
-
   return errors;
 };
 
 const styles = {
   button: {
-    margin: 12
+    marginTop: 10
   },
   exampleImageInput: {
     cursor: "pointer",
@@ -195,14 +184,14 @@ const styles = {
   }
 };
 
-SignupForm = reduxForm({
-  form: "signupForm",
+EditForm = reduxForm({
+  form: "editForm",
   validate,
   destroyOnUnmount: false
-})(SignupForm);
+})(EditForm);
 
-const selector = formValueSelector("signupForm");
-SignupForm = connect(state => {
+const selector = formValueSelector("editForm");
+EditForm = connect(state => {
   // can select values individually
   const username = selector(state, "username");
   const role = selector(state, "role");
@@ -210,6 +199,6 @@ SignupForm = connect(state => {
     username,
     role
   };
-})(SignupForm);
+})(EditForm);
 
-export default SignupForm;
+export default EditForm;

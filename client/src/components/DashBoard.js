@@ -7,6 +7,8 @@ import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
 import RaisedButton from "material-ui/RaisedButton";
 
+import UpdateUser from "./user/updateUser.js";
+
 class DashBoard extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +24,6 @@ class DashBoard extends Component {
   }
 
   render() {
-    console.log(this.props.auth.user.username);
     if (!this.props.auth.user) {
       return (
         <div>
@@ -30,6 +31,9 @@ class DashBoard extends Component {
           <div>Wait!!</div>
         </div>
       );
+    }
+    if (this.props.auth.user.address) {
+      return <div>Welcome back! {this.props.auth.user.username}</div>;
     }
     return (
       <div>
@@ -46,14 +50,17 @@ class DashBoard extends Component {
           </Drawer>
         </div>
         Welcome back!!! {this.props.auth.user.username}
+        <UpdateUser />
       </div>
     );
   }
 }
 
 function mapStateToProps({ auth }) {
+  const { authenticated } = auth;
   return {
-    auth
+    auth,
+    authenticated
   };
 }
 

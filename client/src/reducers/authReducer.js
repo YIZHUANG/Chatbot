@@ -8,7 +8,7 @@ import {
 } from "../actions/types";
 
 const INITIAL_STATE = {
-  authenticated: null,
+  authenticated: false,
   user: false,
   loginError: "",
   signupError: ""
@@ -22,7 +22,6 @@ export default (state = INITIAL_STATE, action) => {
       return { authenticated: true, loginError: "", signupError: "" };
     case LOGIN_FAIL:
       return {
-        authenticated: false,
         loginError:
           "Log in fail, check your if your username or password is correct"
       };

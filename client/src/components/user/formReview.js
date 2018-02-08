@@ -2,7 +2,7 @@ import React from "react";
 
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { signUp } from "../actions";
+import { signUp, updateProfile } from "../../actions";
 
 import ActionFlightTakeoff from "material-ui/svg-icons/action/flight-takeoff";
 import RaisedButton from "material-ui/RaisedButton";
@@ -10,19 +10,19 @@ import ActionHome from "material-ui/svg-icons/action/home";
 import ContentSend from "material-ui/svg-icons/content/send";
 import ContentDrafts from "material-ui/svg-icons/content/drafts";
 
-const SignupFormReview = ({
+const FormReview = ({
   formValues,
   onCancel,
   history,
   signUp,
-  signupError
+  signupError,
+  updateProfile,
+  user
 }) => {
-  const { username, role, address } = formValues;
-  console.log(signupError);
+  const { role, address } = formValues;
+  console.log(user._id);
   const list = (
     <div>
-      <label className="review_label">username</label>
-      <div className="review_text">{username}</div>
       <label className="review_label">address</label>
       <div className="review_text">{address}</div>
       <label className="review_label">Your role</label>
@@ -45,7 +45,7 @@ const SignupFormReview = ({
           <RaisedButton
             primary={true}
             label="Send"
-            onClick={() => signUp(formValues, history)}
+            onClick={() => updateProfile(formValues, user._id, history)}
             icon={<ContentSend />}
           />
         </div>
@@ -55,13 +55,14 @@ const SignupFormReview = ({
 };
 
 function mapStateToProps(state) {
-  const { signupError } = state.auth;
+  const { signupError, user } = state.auth;
   return {
-    formValues: state.form.signupForm.values,
-    signupError
+    formValues: state.form.editForm.values,
+    signupError,
+    user
   };
 }
 
-export default connect(mapStateToProps, { signUp })(
-  withRouter(SignupFormReview)
+export default connect(mapStateToProps, { signUp, updateProfile })(
+  withRouter(FormReview)
 );

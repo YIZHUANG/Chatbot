@@ -8,8 +8,6 @@ module.exports = (app, passport) => {
   app.post("/api/signUp", (req, res) => {
     var username = req.body.username;
     var password = req.body.password;
-    var role = req.body.role;
-    var address = req.body.address;
     if (username && password) {
       //not null.
       User.findOne({ username: username }, (error, user) => {
@@ -22,9 +20,7 @@ module.exports = (app, passport) => {
           User.register(
             // a function that comes with passport-local-mongoose.
             new User({
-              username: req.body.username,
-              role : req.body.role,
-              address : req.body.address
+              username: req.body.username
             }),
             req.body.password,
             (error, user) => {
@@ -43,4 +39,29 @@ module.exports = (app, passport) => {
       });
     }
   });
+
+
+  app.put('/api/user/:userId',(req,res) => {
+    const user=new User();
+    var role = req.body.role;
+    var address = req.body.address;
+    if(!role||!address){
+      res.status(500).send({error:"Your role or address mush have some text"});
+    }else{
+      User.findOne({_id:req.params.userId},(error,user) => {
+        if(error){
+          res.status(500).send({error:'could not find user'});
+        }else{
+          User.update({_id:req.params.userId},{$set:{role:role,address:address}},(error,user) => {
+            if(error){
+              res.status(500).send({error:"something went wrong,perhaps the user dose not exsit"});
+            }else{
+              res.send("success updated");
+            }
+          });
+        }
+      });
+    }
+  });
+
 };

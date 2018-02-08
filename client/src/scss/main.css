@@ -76,6 +76,9 @@ body {
     justify-content: center;
     align-self: center;
     align-items: center; }
+  .signupForm_container .specialty {
+    display: flex;
+    flex-direction: column; }
 
 .review_container {
   margin: auto;

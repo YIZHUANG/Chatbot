@@ -1,9 +1,5 @@
-import React from 'react';
-import {
-  Step,
-  Stepper,
-  StepLabel,
-} from 'material-ui/Stepper';
+import React from "react";
+import { Step, Stepper, StepLabel } from "material-ui/Stepper";
 
 function getStepContent(stepIndex) {
   switch (stepIndex) {
@@ -18,18 +14,18 @@ function getStepContent(stepIndex) {
   }
 }
 
-const Steppers = (stepIndex) => {
+const Steppers = stepIndex => {
   return (
     <div style={{ width: "100%", maxWidth: 700, margin: "auto" }}>
       <Stepper activeStep={getStepContent(stepIndex)}>
         <Step>
-          <StepLabel>Fill out your information</StepLabel>
+          <StepLabel>Fill out your username and password</StepLabel>
         </Step>
         <Step>
-          <StepLabel>Review your entries</StepLabel>
+          <StepLabel>Sign up!</StepLabel>
         </Step>
         <Step>
-          <StepLabel>Wait for approval</StepLabel>
+          <StepLabel>Do cool things</StepLabel>
         </Step>
       </Stepper>
     </div>

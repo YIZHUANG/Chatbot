@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import SignupForm from "./SignupForm";
-import SignupFormReview from "./SignupFormReview";
+import EditForm from "./editForm";
+import FormReview from "./formReview";
 import { reduxForm } from "redux-form";
 
-class SignUp extends Component {
+class UpdateUser extends Component {
   constructor(props) {
     super(props);
     this.state = { showFormReview: false };
@@ -12,16 +12,12 @@ class SignUp extends Component {
   renderContent() {
     if (this.state.showFormReview) {
       return (
-        <SignupFormReview
-          onCancel={() => this.setState({ showFormReview: false })}
-        />
+        <FormReview onCancel={() => this.setState({ showFormReview: false })} />
       );
     }
 
     return (
-      <SignupForm
-        onEmailSubmit={() => this.setState({ showFormReview: true })}
-      />
+      <EditForm onSubmit={() => this.setState({ showFormReview: true })} />
     );
   }
 
@@ -31,5 +27,5 @@ class SignUp extends Component {
 }
 
 export default reduxForm({
-  form: "signupForm"
-})(SignUp);
+  form: "editForm"
+})(UpdateUser);
