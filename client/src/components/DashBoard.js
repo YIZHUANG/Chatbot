@@ -3,6 +3,8 @@ import { HashRouter, Route, Router, Link } from "react-router-dom";
 import { fetchUser } from "../actions";
 import { connect } from "react-redux";
 
+import Demo from "./chatbot/index";
+
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
 import RaisedButton from "material-ui/RaisedButton";
@@ -24,6 +26,18 @@ class DashBoard extends Component {
   }
 
   render() {
+    const steps = [
+  {
+    id: '0',
+    message: 'Welcome to react chatbot!',
+    trigger: '1',
+  },
+  {
+    id: '1',
+    message: 'Bye!',
+    end: true,
+  },
+];
     if (!this.props.auth.user) {
       return (
         <div>
@@ -33,7 +47,8 @@ class DashBoard extends Component {
       );
     }
     if (this.props.auth.user.address) {
-      return <div>Welcome back! {this.props.auth.user.username}</div>;
+      const hello="dfsdfsf";
+      return (<div><Demo /></div>);
     }
     return (
       <div>

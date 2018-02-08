@@ -40,6 +40,9 @@ require("./services/passport")(app, passport);
 require("./routes/authRoutes/signUp")(app, passport);
 require("./routes/authRoutes/signIn")(app, passport);
 
+
+require("./services/chatbot")(app);  //chatbot
+
 if (process.env.NODE_ENV === "production") {
   // express will serve up production assets.
   app.use(express.static("client/build"));

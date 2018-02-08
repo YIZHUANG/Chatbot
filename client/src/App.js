@@ -15,6 +15,7 @@ import SignupForm from "./components/auth/SignupForm";
 import Redirect from "./common/redirect";
 import require_auth from "./components/HOC/require_auth";
 
+
 const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 
 class App extends Component {
