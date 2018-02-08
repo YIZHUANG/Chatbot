@@ -12,6 +12,8 @@ import LoginForm from "./components/auth/LoginForm";
 import UpdateUser from "./components/user/updateUser";
 import SignupForm from "./components/auth/SignupForm";
 
+import Chatbot from "./components/chatbot/chatbot";
+
 import Redirect from "./common/redirect";
 import require_auth from "./components/HOC/require_auth";
 

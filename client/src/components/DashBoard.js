@@ -9,6 +9,8 @@ import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
 import RaisedButton from "material-ui/RaisedButton";
 
+import Chatbot from "./chatbot/chatbot";
+
 import UpdateUser from "./user/updateUser.js";
 
 class DashBoard extends Component {
@@ -26,18 +28,6 @@ class DashBoard extends Component {
   }
 
   render() {
-    const steps = [
-  {
-    id: '0',
-    message: 'Welcome to react chatbot!',
-    trigger: '1',
-  },
-  {
-    id: '1',
-    message: 'Bye!',
-    end: true,
-  },
-];
     if (!this.props.auth.user) {
       return (
         <div>
@@ -47,8 +37,11 @@ class DashBoard extends Component {
       );
     }
     if (this.props.auth.user.address) {
-      const hello="dfsdfsf";
-      return (<div><Demo /></div>);
+      return (
+        <div>
+          <Chatbot data={this.props.auth.user} />
+        </div>
+      );
     }
     return (
       <div>
