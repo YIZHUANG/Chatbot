@@ -17,6 +17,11 @@ class Chatbot extends Component {
 
     return (
       <div>
+<iframe
+    width="350"
+    height="430"
+    src="https://console.dialogflow.com/api-client/demo/embedded/376ec32a-61b0-49fd-8e84-b61f66e71943">
+</iframe>
         <ChatBot
           steps={[
             {
@@ -27,7 +32,7 @@ class Chatbot extends Component {
             {
               id: "2",
               options: [
-                { value: 1, label: "Good", trigger: "3" },
+                { value: 1, label: "Good", trigger: ()=>console.log("damn it") },
                 {
                   value: 2,
                   label: "Not good",
