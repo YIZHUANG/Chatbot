@@ -2,27 +2,24 @@ import React, { Component } from "react";
 import StripeCheckout from "react-stripe-checkout";
 import { connect } from "react-redux";
 import { handleStripeToken } from "../actions";
+import RaisedButton from "material-ui/RaisedButton";
 
 class StripePayments extends Component {
   onSubmit(token) {
     this.props.handleStripeToken(token);
-
-    this.setState({ trigger: true }, () => {
-      this.props.triggerNextStep({ value: 12 });
-    });
+    this.props.triggerNextStep();
   }
 
   render() {
-    console.log(process.env.REACT_APP_STRIPE_KEY);
     return (
       <StripeCheckout
         name="yi"
-        description="$5 for 20 emails"
+        description="Give me all your money"
         amount={500}
         token={token => this.onSubmit(token)}
         stripeKey={process.env.REACT_APP_STRIPE_KEY}
       >
-        <button className="btn">Top up</button>
+        <RaisedButton label="Pay now" primary={true} />
       </StripeCheckout>
     );
   }

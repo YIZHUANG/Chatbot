@@ -16,6 +16,11 @@ import Divider from "material-ui/Divider";
 import LoginFields from "../../assets/loginFields";
 
 class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { renderChatBox: false };
+  }
+
   componentWillMount() {
     this.props.fetchUser();
   }
@@ -54,10 +59,29 @@ class LoginForm extends Component {
     ));
   }
 
+  renderChatbox() {
+    return (
+      <iframe
+        width="350"
+        height="430"
+        src="https://console.dialogflow.com/api-client/demo/embedded/2c5fa8f0-94ed-469e-bcf8-c7a4f66180ec"
+      />
+    );
+  }
+
   render() {
     console.log(this.props.loginError);
     return (
       <div>
+        <FontIcon
+          onClick={() =>
+            this.setState({ renderChatBox: !this.state.renderChatBox })
+          }
+          className="material-icons"
+          style={{ fontSize: 100 }}
+        >
+          chat bubble outline
+        </FontIcon>
         <div className="loginForm_container">
           <form
             onSubmit={this.props.handleSubmit(this.onLogin.bind(this))}
@@ -71,6 +95,14 @@ class LoginForm extends Component {
               primary={true}
               icon={<PersonAdd />}
             />
+            <a href="api/google">
+              <RaisedButton
+                className="loginForm_btn"
+                label="Google Log in"
+                primary={true}
+                icon={<PersonAdd />}
+              />
+            </a>
           </form>
           {this.props.loginError}
           <span className="signup_noti">
@@ -79,8 +111,8 @@ class LoginForm extends Component {
               here
             </Link>
           </span>
-          <a href="api/google">Google log in</a>
         </div>
+        {this.state.renderChatBox ? this.renderChatbox() : null}
       </div>
     );
   }

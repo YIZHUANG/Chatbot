@@ -7,6 +7,10 @@ const userSchema = new Schema({
   password: String,
   role: String,
   address: String,
+  credits: {
+    type: Number,
+    default: 0
+  },
   google: {
     googleId: String,
     name: String,

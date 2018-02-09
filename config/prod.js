@@ -8,5 +8,5 @@ module.exports = {
   redirectDomain: process.env.REDIRECT_DOMAIN,
   googleClientID: process.env.GOOGLE_CLIENT_ID,
   googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  redirectGoogleCallBack:process.env.GOOGLE_CALL_BACK
+  redirectGoogleCallBack: process.env.GOOGLE_CALL_BACK
 };

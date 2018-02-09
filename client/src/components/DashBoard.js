@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 
 import Demo from "./chatbot/index";
 
+import FontIcon from "material-ui/FontIcon";
+
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
 import RaisedButton from "material-ui/RaisedButton";
@@ -16,7 +18,7 @@ import UpdateUser from "./user/updateUser.js";
 class DashBoard extends Component {
   constructor(props) {
     super(props);
-    this.state = { open: false };
+    this.state = { open: false, renderChatBox: false };
   }
 
   handleToggle = () => this.setState({ open: !this.state.open });
@@ -25,6 +27,28 @@ class DashBoard extends Component {
 
   componentDidMount() {
     this.props.fetchUser();
+  }
+
+  renderDrawer() {
+    return (
+      <div>
+        {" "}
+        <RaisedButton label="Open Drawer" onClick={this.handleToggle} />
+        <Drawer
+          docked={false}
+          width={200}
+          open={this.state.open}
+          onRequestChange={open => this.setState({ open })}
+        >
+          <MenuItem onClick={this.handleClose}>Menu Item</MenuItem>
+          <MenuItem onClick={this.handleClose}>Menu Item 2</MenuItem>
+        </Drawer>
+      </div>
+    );
+  }
+
+  renderChatBot() {
+    return <Chatbot data={this.props.auth.user} />;
   }
 
   render() {
@@ -36,29 +60,26 @@ class DashBoard extends Component {
         </div>
       );
     }
-    if (this.props.auth.user.address) {
-      return (
-        <div>
-          <Chatbot data={this.props.auth.user} />
-        </div>
-      );
+    if (!this.props.auth.user.address) {
+      return <UpdateUser />;
     }
+
     return (
       <div>
         <div>
-          <RaisedButton label="Open Drawer" onClick={this.handleToggle} />
-          <Drawer
-            docked={false}
-            width={200}
-            open={this.state.open}
-            onRequestChange={open => this.setState({ open })}
+          <FontIcon
+            onClick={() =>
+              this.setState({ renderChatBox: !this.state.renderChatBox })
+            }
+            className="material-icons"
+            style={{ fontSize: 100 }}
           >
-            <MenuItem onClick={this.handleClose}>Menu Item</MenuItem>
-            <MenuItem onClick={this.handleClose}>Menu Item 2</MenuItem>
-          </Drawer>
+            chat bubble outline
+          </FontIcon>
+          {this.renderDrawer()}
         </div>
         Welcome back!!! {this.props.auth.user.username}
-        <UpdateUser />
+        {this.props.auth.user.address ? this.renderChatBot() : null}
       </div>
     );
   }

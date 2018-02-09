@@ -2,27 +2,28 @@ import React, { Component } from "react";
 import ChatBot from "react-simple-chatbot";
 
 import Review from "./review";
+import Message from "./message";
 
 import StripePayments from "../StripePayments";
 
 import Demo from "./index";
 
+import Appointment from "./appointment";
+
 class Chatbot extends Component {
   onConsole() {
     console.log("yep!!");
   }
+
   render() {
     console.log(this.props.data.username);
     let mess = `Hello ${this.props.data.username}, how are you today? `;
 
     return (
       <div>
-<iframe
-    width="350"
-    height="430"
-    src="https://console.dialogflow.com/api-client/demo/embedded/376ec32a-61b0-49fd-8e84-b61f66e71943">
-</iframe>
         <ChatBot
+          headerTitle="Super smartbot"
+          floating
           steps={[
             {
               id: "1",
@@ -32,7 +33,11 @@ class Chatbot extends Component {
             {
               id: "2",
               options: [
-                { value: 1, label: "Good", trigger: ()=>console.log("damn it") },
+                {
+                  value: 1,
+                  label: "Good",
+                  trigger: "4"
+                },
                 {
                   value: 2,
                   label: "Not good",
@@ -42,11 +47,6 @@ class Chatbot extends Component {
               ]
             },
             {
-              id: "3",
-              message: "It's good to know!",
-              trigger: "5"
-            },
-            {
               id: "4",
               message: "I am so sorry to hear that!",
               trigger: "5"
@@ -54,90 +54,88 @@ class Chatbot extends Component {
             {
               id: "5",
               message: "How many i be of help?",
-              trigger: "6"
+              trigger: "message"
+            },
+            {
+              id: "message",
+              user: true,
+              trigger: "6",
+              validator: value => {
+                if (!value) return "Please try again!";
+                else {
+                  return true;
+                }
+              }
             },
             {
               id: "6",
+              component: <Message />,
+              replace: true,
+              waitAction: true,
+              asMessage: true,
+              trigger: "6"
+            },
+            {
+              id: "message",
+              user: true,
+              trigger: "6"
+            },
+            {
+              id: "appointmentBefore",
+              message: "Ok, just a moment please",
+              trigger: "appointment"
+            },
+            {
+              id: "appointment",
+              message: "Please choose your prefer time and location",
+              trigger: "chooseAppointment"
+            },
+            {
+              id: "chooseAppointment",
+              component: <Appointment />,
+              replace: true,
+              waitAction: true,
+              asMessage: true,
+              trigger: "bookSuccess"
+            },
+            {
+              id: "bookSuccess",
+              message: "You have booked an appointment, would you like to pay",
+              trigger: "PayOrNot"
+            },
+            {
+              id: "PayOrNot",
               options: [
                 {
                   value: 1,
-                  label:
-                    "Book an appointment at the nearest health care center",
-                  trigger: "10"
+                  label: "Yes",
+                  trigger: "YesPay"
                 },
                 {
                   value: 2,
-                  label: "Talk to a doctor directly",
-                  trigger: "9"
-                },
-                {
-                  value: 3,
-                  label: "Leave a message to the doctor",
-                  trigger: "15"
-                },
-                { value: 4, label: "Others", trigger: "7" }
+                  label: "No",
+                  trigger: "NotPay"
+                }
               ]
             },
             {
-              id: "7",
-              message: "Could you be more specific ?",
-              trigger: "other"
-            },
-            {
-              id: "other",
-              user: true,
-              trigger: "8"
-            },
-            {
-              id: "8",
-              component: <Review />,
-              asMessage: true,
-              end: true
-            },
-            {
-              id: "9",
-              component: <Demo />,
-              waitAction: true
-            },
-            {
-              id: "10",
-              message:
-                "Great, i have book you an appointment at HelsinkiKatu 12B at tomorrow 2pm, the appointment fee is 5 euro, would you like to pay now?",
-              trigger: "11"
-            },
-            {
-              id: "11",
-              options: [
-                { value: 1, label: "Yes", trigger: "13" },
-                {
-                  value: 2,
-                  label: "Not good",
-                  trigger: "4"
-                },
-                { value: 3, label: "No thx", trigger: "14" }
-              ]
-            },
-            {
-              id: "13",
+              id: "YesPay",
               component: <StripePayments />,
+              replace: true,
               waitAction: true,
-              trigger: "12"
+              trigger: "paySuccess"
             },
             {
-              id: "12",
+              id: "paySuccess",
               message:
-                "Thank you for your payment, remember to come to your appointment at ....!",
-              end: true
+                "Thank you for your payment, is there anything i can help you with?",
+              trigger: "message"
             },
             {
-              id: "14",
-              message: "Ok, be sure to be there on time!",
-              end: true
-            },
-            {
-              id: "15",
-              user:true,
-              end: true
+              id: "NotPay",
+              message:
+                "Remember you can always pay when you visit the doctor in person, is there anything i can help you with?",
+              trigger: "message"
             }
           ]}
         />

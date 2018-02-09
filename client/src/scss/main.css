@@ -47,7 +47,7 @@ body {
   .loginForm_container .loginForm {
     margin: auto; }
     .loginForm_container .loginForm .loginForm_btn {
-      margin-left: 55px; }
+      margin-right: 5px; }
   .loginForm_container .link-to-signup {
     text-decoration: none; }
   .loginForm_container .signup_noti {

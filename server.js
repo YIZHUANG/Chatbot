@@ -40,6 +40,7 @@ require("./services/passport")(app, passport);
 require("./routes/authRoutes/signUp")(app, passport);
 require("./routes/authRoutes/signIn")(app, passport);
 
+require("./routes/chatbot/chatbot")(app);
 
 require("./services/chatbot")(app);  //chatbot
 

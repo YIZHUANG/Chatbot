@@ -1,31 +1,29 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
-import ChatBot from 'react-simple-chatbot';
+import ChatBot from "react-simple-chatbot";
 
 export default class Review extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      other: ''
+      other: ""
     };
   }
 
   componentWillMount() {
     const { steps } = this.props;
-    const { other} = steps;
-    this.setState({ other});
+    const { other } = steps;
+    this.setState({ other });
   }
 
-  componentDidMount(){
-
-  }
+  componentDidMount() {}
 
   render() {
-    const { other} = this.state;
+    const { other } = this.state;
     return (
-      <div style={{ width: '100%' }}>
+      <div style={{ width: "100%" }}>
         <h3>Summary</h3>
         <table>
           <tbody>

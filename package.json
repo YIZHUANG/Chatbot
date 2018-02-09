@@ -16,6 +16,7 @@
   },
   "author": "yizhuang",
   "dependencies": {
+    "apiai": "^4.0.3",
     "body-parser": "^1.18.2",
     "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.4",
@@ -30,6 +31,7 @@
     "passport-local-mongoose": "4.4.0",
     "path-parser": "3.0.1",
     "prompt-sync": "^4.1.5",
+    "request": "^2.83.0",
     "watson-developer-cloud": "^3.0.6"
   }
 }

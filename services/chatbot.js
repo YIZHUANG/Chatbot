@@ -6,20 +6,18 @@ var Conversation = require("watson-developer-cloud/conversation/v1"); // watson 
 
 var app = express();
 
-// Bootstrap application settings
-app.use(express.static("./public")); // load UI from public folder
-app.use(bodyParser.json());
-// Set up Conversation service wrapper.
 
-var workspace_id = "87c57bee-2c6a-4921-9210-168e8d364fee"; // replace with workspace ID
+app.use(express.static("./public"));
+app.use(bodyParser.json());
+var workspace_id = "87c57bee-2c6a-4921-9210-168e8d364fee";
 
 module.exports = app => {
   var conversation = new Conversation({
-    username: "64f66201-31d5-4001-8ffd-5b576ee39b95", // replace with service username
-    password: "eteBPxcAzj5J", // replace with service password
+    username: "64f66201-31d5-4001-8ffd-5b576ee39b95",
+    password: "eteBPxcAzj5J",
     version_date: "2017-05-26"
   });
-  // Start conversation with empty message.
+
   app.post("/api/message", function(req, res) {
     var workspace = "87c57bee-2c6a-4921-9210-168e8d364fee";
     if (!workspace) {
@@ -39,7 +37,6 @@ module.exports = app => {
       input: req.body.input || {}
     };
 
-    // Send the input to the conversation service
     conversation.message(payload, function(err, data) {
       if (err) {
         return res.status(err.code || 500).json(err);
@@ -50,9 +47,9 @@ module.exports = app => {
 
   /**
    * Updates the response text using the intent confidence
-   * @param  {Object} input The request to the Conversation service
-   * @param  {Object} response The response from the Conversation service
-   * @return {Object}          The response with the updated message
+    @param  {Object} input
+    @param  {Object} response
+    @return {Object}
    */
   function updateMessage(input, response) {
     var responseText = null;
