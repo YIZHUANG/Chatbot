@@ -33,7 +33,6 @@ export default class NormalTalk extends Component {
       .then(res => this.setState({ response: res.data }));
   }
 
-
   render() {
     const { text, response } = this.state;
     return (
@@ -41,7 +40,11 @@ export default class NormalTalk extends Component {
         <table>
           <tbody>
             <tr>
-              <td>{response}</td>
+              <td>
+                {response == "Bookappointment" || response == "doctor-request"
+                  ? "Refresh your webpage to book appointment or talk to a doctor"
+                  : response}
+              </td>
             </tr>
           </tbody>
         </table>
