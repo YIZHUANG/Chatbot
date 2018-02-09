@@ -96,3 +96,6 @@ body {
   .review_container .review_text {
     font-size: 1.2rem;
     margin-bottom: 1rem; }
+
+.openDoctorChat {
+  margin-top: 10px; }

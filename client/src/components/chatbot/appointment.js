@@ -6,13 +6,12 @@ import ChatBot from "react-simple-chatbot";
 import PersonAdd from "material-ui/svg-icons/social/person-add";
 import RaisedButton from "material-ui/RaisedButton";
 import FlatButton from "material-ui/FlatButton";
-
+import Dialog from "material-ui/Dialog";
+import DatePicker from "material-ui/DatePicker";
 import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton";
 
 import SliderExampleAxis from "../../common/slider";
 import Dialoge from "../../common/dialog";
-import Dialog from "material-ui/Dialog";
-import DatePicker from "material-ui/DatePicker";
 
 export default class Appointment extends Component {
   constructor(props) {

@@ -19,7 +19,6 @@ export default class Message extends Component {
       response: "",
       trigger: false
     };
-    this.onNext = this.onNext.bind(this);
   }
 
   componentWillMount() {
@@ -35,41 +34,41 @@ export default class Message extends Component {
       .then(res => this.setState({ response: res.data }));
   }
 
-  onNext() {
-    this.setState({ trigger: true }, () => {
-      // this.props.triggerNextStep(null,{ end });
-      this.props.triggerNextStep({ value: null, trigger: "appointmentBefore" });
-    });
-  }
-
   componentDidUpdate() {
-    if (
-      this.state.response ==
-      "Please choose the time slot and location that suits you best"
-    ) {
+    if (this.state.response == "Bookappointment") {
       this.setState({ trigger: true }, () => {
-        // this.props.triggerNextStep(null,{ end });
         this.props.triggerNextStep({
           value: null,
           trigger: "appointmentBefore"
         });
       });
+    } else if (this.state.response == "doctor-request") {
+      this.setState({ trigger: true }, () => {
+        this.props.triggerNextStep({
+          value: null,
+          trigger: "doctorBefore"
+        });
+      });
+    }
+    else{
+      this.setState({ trigger: true }, () => {
+        this.props.triggerNextStep({
+          value: this.state.text,
+          trigger: "Consult"
+        });
+      });
     }
   }
 
-  renderSlider() {
-    if (this.state.response == "Hi how's it going?") {
+  renderNextButton() {
+    const { response } = this.state;
+    if (response !== "Bookappointment" && response !== "doctor-request") {
       return (
-        <div>
-          <SliderExampleAxis />
-          <button onClick={this.onNext()}>Confirm</button>
-        </div>
+        <button onClick={() => this.props.triggerNextStep()}>continue</button>
       );
+    } else {
+      return;
     }
-  }
-
-  triggerNext() {
-    this.props.triggerNextStep({ value: null, trigger: "test" });
   }
 
   render() {
@@ -83,7 +82,6 @@ export default class Message extends Component {
             </tr>
           </tbody>
         </table>
-        {this.renderSlider()}
       </div>
     );
   }

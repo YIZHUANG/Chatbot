@@ -10,10 +10,15 @@ module.exports = app => {
     });
 
     apiai.on("response", response => {
-      console.log(response.result.fulfillment.speech);
-      res.send(response.result.fulfillment.speech);
+      let text = response.result.fulfillment.speech;
+      let intentName = response.result.metadata.intentName;
+      console.log(response);
+      if (intentName == "Bookappointment" || intentName == "doctor-request") {
+        res.send(intentName);
+      } else {
+        res.send(text);
+      }
     });
-
     apiai.on("error", error => {
       console.log(error);
     });

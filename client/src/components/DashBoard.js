@@ -3,7 +3,6 @@ import { HashRouter, Route, Router, Link } from "react-router-dom";
 import { fetchUser } from "../actions";
 import { connect } from "react-redux";
 
-import Demo from "./chatbot/index";
 
 import FontIcon from "material-ui/FontIcon";
 
