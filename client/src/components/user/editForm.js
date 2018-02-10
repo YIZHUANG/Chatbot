@@ -129,6 +129,7 @@ class EditForm extends Component {
               <MenuItem value="user" primaryText="Normal user" />
               <MenuItem value="doctor" primaryText="doctor" />
               <MenuItem value="nurse" primaryText="nurse" />
+              <MenuItem value="developer" primaryText="developer" />
             </Field>
             {this.props.role === "doctor" || this.props.role === "nurse"
               ? this.renderSpecialty()

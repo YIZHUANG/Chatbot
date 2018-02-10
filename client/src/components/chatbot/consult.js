@@ -40,16 +40,25 @@ export default class Consult extends Component {
       .then(res => this.setState({ response: res.data }));
   }
 
+  renderResponse() {
+    const { response } = this.state;
+    if (response == "Bookappointment") {
+      return <div>Please type the number 1 to book an appointment</div>;
+    } else if (response == "doctor-request") {
+      return <div>Please type the number 2 to talk to a doctor</div>;
+    } else {
+      return response;
+    }
+  }
 
   render() {
-    console.log(this.props.steps.message.value);
     const { text, response } = this.state;
     return (
       <div style={{ width: "100%" }}>
         <table>
           <tbody>
             <tr>
-              <td>{response}</td>
+              <td>{this.renderResponse()}</td>
             </tr>
           </tbody>
         </table>

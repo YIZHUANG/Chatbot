@@ -3,6 +3,30 @@
 
 ### On-going
 
+### Demo
+``
+https://mysterious-eyrie-35636.herokuapp.com
+``
+``
+After you log in, and update your information, refresh the page manually.
+``
+
+### Available list of commands  (doesn't have to be the exact same sentence)
+``
+1. I would like to book an appointment
+``
+``
+2. I would like to talk to a docotor
+``
+``
+3. See a list of commands
+``
+4. I am not feeling well
+``
+``
+5. Or just type anything you want and see what happen
+``
+
 ### Installation process  
 
 ``

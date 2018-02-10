@@ -12,7 +12,7 @@ import Appointment from "./appointment";
 
 import Consult from "./consult";
 
-import NormalTalk from './normalTalk';
+import NormalTalk from "./normalTalk";
 
 class Chatbot extends Component {
   onConsole() {
@@ -84,8 +84,7 @@ class Chatbot extends Component {
               options: [
                 {
                   value: 1,
-                  label:
-                    "Book an appointment at the hospital",
+                  label: "Book an appointment at the hospital",
                   trigger: "appointmentBefore"
                 },
                 {
@@ -140,7 +139,7 @@ class Chatbot extends Component {
             },
             {
               id: "bookSuccess",
-              message: "You have booked an appointment, would you like to pay",
+              message: "You have booked an appointment, the appointment fee is 5 euro, would you like to pay now or pay when you visit the doctor ? ",
               trigger: "PayOrNot"
             },
             {
@@ -210,7 +209,17 @@ class Chatbot extends Component {
             {
               id: "message",
               user: true,
-              trigger: "6"
+              trigger: ({ value, steps }) => {
+                if (value == "1") {
+                  return "appointmentBefore";
+                }
+                if (value == "2") {
+                  return "doctorBefore";
+                } else {
+                  return "6";
+                }
+              }
+              //trigger: "6"
             },
             {
               id: "end",
@@ -226,23 +235,43 @@ class Chatbot extends Component {
             {
               id: "userInput",
               user: true,
-              trigger: "Consult"
+              trigger: ({ value, steps }) => {
+                if (value == "1") {
+                  return "appointmentBefore";
+                }
+                if (value == "2") {
+                  return "doctorBefore";
+                } else {
+                  return "Consult";
+                }
+              }
+              //trigger: "Consult"
             },
             {
-              id:"normalInput",
-              user:true,
-              trigger:"normalTalk"
+              id: "normalInput",
+              user: true,
+              trigger: ({ value, steps }) => {
+                if (value == "1") {
+                  return "appointmentBefore";
+                }
+                if (value == "2") {
+                  return "doctorBefore";
+                } else {
+                  return "normalTalk";
+                }
+              }
+              //trigger:"normalTalk"
             },
             {
-              id:"beforeConsult",
-              message:"just ask me what you want to know",
-              trigger:"normalInput"
+              id: "beforeConsult",
+              message: "just ask me what you want to know",
+              trigger: "normalInput"
             },
             {
-              id:"normalTalk",
-              component:<NormalTalk />,
-              asMessage:true,
-              trigger:"normalInput"
+              id: "normalTalk",
+              component: <NormalTalk />,
+              asMessage: true,
+              trigger: "normalInput"
             }
           ]}
         />

@@ -49,8 +49,7 @@ export default class Message extends Component {
           trigger: "doctorBefore"
         });
       });
-    }
-    else{
+    } else {
       this.setState({ trigger: true }, () => {
         this.props.triggerNextStep({
           value: this.state.text,

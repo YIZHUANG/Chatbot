@@ -33,6 +33,17 @@ export default class NormalTalk extends Component {
       .then(res => this.setState({ response: res.data }));
   }
 
+  renderResponse() {
+    const { response } = this.state;
+    if (response == "Bookappointment") {
+      return <div>Please type the number 1 to book an appointment</div>;
+    } else if (response == "doctor-request") {
+      return <div>Please type the number 2 to talk to a doctor</div>;
+    } else {
+      return response;
+    }
+  }
+
   render() {
     const { text, response } = this.state;
     return (
@@ -40,11 +51,7 @@ export default class NormalTalk extends Component {
         <table>
           <tbody>
             <tr>
-              <td>
-                {response == "Bookappointment" || response == "doctor-request"
-                  ? "Refresh your webpage to book appointment or talk to a doctor"
-                  : response}
-              </td>
+              <td>{this.renderResponse()}</td>
             </tr>
           </tbody>
         </table>
