@@ -31,7 +31,7 @@ After you log in, and update your information, and start talking to the chatbot
 ### Installation process  
 
 ``
-Use your own config. (sensitive stuff)
+Use your own config. (sensitive stuff). check the config folder
 ``
 
 ``
