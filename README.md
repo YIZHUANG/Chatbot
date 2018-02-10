@@ -13,7 +13,7 @@ After you log in, and update your information, refresh the page manually.
 
 ### Available list of commands  (doesn't have to be the exact same sentence)
 ``
-1. I would like to book an appointment
+1. I would like to book an appointment  (using credit card number 4242424242424242 to pay)
 ``
 ``
 2. I would like to talk to a docotor

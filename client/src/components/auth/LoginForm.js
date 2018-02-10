@@ -95,7 +95,7 @@ class LoginForm extends Component {
               primary={true}
               icon={<PersonAdd />}
             />
-            <a href="http://mysterious-eyrie-35636.herokuapp.com/api/google">
+            <a href="api/google">
               <RaisedButton
                 className="loginForm_btn"
                 label="Google Log in"
