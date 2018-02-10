@@ -19,10 +19,10 @@ module.exports = (app, passport) => {
   );
 
   app.get(
-    "/api/google/callback",
+    "https://health-care-chat-bot.herokuapp.com/api/google/callback",
     passport.authenticate("google"),
     (req, res) => {
-      res.redirect("/DashBoard");
+      res.redirect("https://health-care-chat-bot.herokuapp.com/DashBoard");
     }
   );
 
