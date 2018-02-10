@@ -1,14 +1,14 @@
 ## Health care chat-bot
 ## Making this kind of stuff is fun
 
-## On-going
+## On-going   Author : YI ZHUANG (lead developer)  Jose
 
 ## Demo
+
+Demo is [here](https://health-care-chat-bot.herokuapp.com)
+
 ``
-Demo is [here](https://mysterious-eyrie-35636.herokuapp.com)
-``
-``
-After you log in, and update your information, refresh the page manually.
+After you log in, and update your information, and start talking to the chatbot
 ``
 ## You can use the voice recognition  instead of typing.
 

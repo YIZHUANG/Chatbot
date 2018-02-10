@@ -27,7 +27,7 @@ module.exports = (app, passport) => {
       {
         clientID: keys.googleClientID,
         clientSecret: keys.googleClientSecret,
-        callbackURL: 'http://mysterious-eyrie-35636.herokuapp.com/api/google/callback',
+        callbackURL: 'http://health-care-chat-bot.herokuapp.com/api/google/callback',
         proxy: true
       },
       (accessToken, refreshToken, profile, done) => {
