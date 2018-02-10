@@ -93,10 +93,17 @@ export const updateProfile = ({ role, address }, userId, history) => {
     axios
       .put(`/api/user/${userId}`, { role, address })
       .then(() => {
+        fetchUser();
         history.push("/DashBoard");
       })
       .catch();
   };
+};
+
+const updateSucess = dispatch => {
+  dispatch({
+    type: FETCH_USER
+  });
 };
 
 export const handleStripeToken = token => async dispatch => {

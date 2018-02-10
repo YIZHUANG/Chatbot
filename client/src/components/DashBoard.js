@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { HashRouter, Route, Router, Link } from "react-router-dom";
-import { fetchUser } from "../actions";
+import { fetchUser, logout } from "../actions";
 import { connect } from "react-redux";
 
 
@@ -28,6 +28,15 @@ class DashBoard extends Component {
     this.props.fetchUser();
   }
 
+  componentWillReceiveProps(nextProps){
+    if(this.props.auth.user.username!==nextProps.auth.user.username){
+      this.props.fetchUser();
+    }
+    if(!nextProps.auth.user){
+      this.props.history.push("/")
+    }
+  }
+
   renderDrawer() {
     return (
       <div>
@@ -39,8 +48,8 @@ class DashBoard extends Component {
           open={this.state.open}
           onRequestChange={open => this.setState({ open })}
         >
-          <MenuItem onClick={this.handleClose}>Menu Item</MenuItem>
-          <MenuItem onClick={this.handleClose}>Menu Item 2</MenuItem>
+          <MenuItem onClick={this.handleClose}>Dashboard</MenuItem>
+          <MenuItem onClick={()=>this.props.logout(this.props.history)}>Log out</MenuItem>
         </Drawer>
       </div>
     );
@@ -66,15 +75,6 @@ class DashBoard extends Component {
     return (
       <div>
         <div>
-          <FontIcon
-            onClick={() =>
-              this.setState({ renderChatBox: !this.state.renderChatBox })
-            }
-            className="material-icons"
-            style={{ fontSize: 100 }}
-          >
-            chat bubble outline
-          </FontIcon>
           {this.renderDrawer()}
         </div>
         Welcome back!!! {this.props.auth.user.username}
@@ -93,5 +93,5 @@ function mapStateToProps({ auth }) {
 }
 
 export default connect(mapStateToProps, {
-  fetchUser
+  fetchUser,logout
 })(DashBoard);

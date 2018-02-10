@@ -44,7 +44,7 @@ const FormReview = ({
           />
           <RaisedButton
             primary={true}
-            label="Send"
+            label="Save"
             onClick={() => updateProfile(formValues, user._id, history)}
             icon={<ContentSend />}
           />

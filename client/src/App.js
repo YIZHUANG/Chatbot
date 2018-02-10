@@ -30,7 +30,7 @@ class App extends Component {
                 <Route
                   exact
                   path="/DashBoard"
-                  component={require_auth(DashBoard)}
+                  component={DashBoard}
                 />
                 <Route exact path="/SignupForm" component={SignupForm} />
                 <Route exact path="/" component={LoginForm} />

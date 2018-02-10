@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+import LinearProgress from "material-ui/LinearProgress";
+
 class Redirect extends Component {
   constructor(props) {
     super(props);
-    this.state = { counter: 5 };
+    this.state = { counter: 3 };
   }
   componentWillUnmount() {
     clearInterval(this.timer);
@@ -30,7 +32,14 @@ class Redirect extends Component {
 
   render() {
     console.log(this.state.counter);
-    return <div>Hello! You will be redirect in {this.state.counter} sec</div>;
+    return (
+      <div>
+        <span className="Logging">
+        Logging in .......
+      </span>
+        <LinearProgress mode="indeterminate" />
+      </div>
+    );
   }
 }
 

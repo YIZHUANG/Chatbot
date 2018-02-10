@@ -37,7 +37,6 @@ class Chatbot extends Component {
   closeChatbox() {}
 
   render() {
-    console.log(this.props.data.username);
     let mess = `Hello ${this.props.data.username}, how are you today? `;
 
     return (
@@ -46,6 +45,7 @@ class Chatbot extends Component {
         <ChatBot
           headerTitle="Super smartbot"
           floating
+          recognitionEnable={true}
           steps={[
             {
               id: "1",
@@ -69,14 +69,16 @@ class Chatbot extends Component {
             },
             {
               id: "feelinggood",
-              message:
-                "I am glad to know, is there anything i can help you with? ",
+              message: `I am glad to know , is there anything i can help you with ${
+                this.props.data.username
+              } ? `,
               trigger: "options"
             },
             {
               id: "feelingbad",
-              message:
-                "I am so sorry to hear that, but have no fear, you're in the right place. How may i help?",
+              message: `I am so sorry to hear that ${
+                this.props.data.username
+              } , but have no fear, you're in the right place. How may i help?`,
               trigger: "options"
             },
             {
@@ -97,12 +99,14 @@ class Chatbot extends Component {
             },
             {
               id: "4",
-              message: "I am so sorry to hear that!",
+              message: `I am so sorry to hear that ${
+                this.props.data.username
+              }!`,
               trigger: "5"
             },
             {
               id: "5",
-              message: "How many i be of help?",
+              message: `How many i be of help ${this.props.data.username}?`,
               trigger: "message"
             },
             {
@@ -115,12 +119,14 @@ class Chatbot extends Component {
             },
             {
               id: "commonMessage",
-              message: "Is there anything i can help you with?",
+              message: `Is there anything i can help you with ${
+                this.props.data.username
+              } ?`,
               trigger: "message"
             },
             {
               id: "appointmentBefore",
-              message: "Sure, just a moment please",
+              message: `Sure ${this.props.data.username}, just a moment please`,
               trigger: "appointment"
             },
             {
@@ -139,7 +145,8 @@ class Chatbot extends Component {
             },
             {
               id: "bookSuccess",
-              message: "You have booked an appointment, the appointment fee is 5 euro, would you like to pay now or pay when you visit the doctor ? ",
+              message:
+                "You have booked an appointment, the appointment fee is 5 euro, would you like to pay now or pay when you visit the doctor ? ",
               trigger: "PayOrNot"
             },
             {
@@ -166,8 +173,9 @@ class Chatbot extends Component {
             },
             {
               id: "paySuccess",
-              message:
-                "Thank you for your payment, is there anything i can help you with?",
+              message: `Thank you for your payment ${
+                this.props.data.username
+              }, is there anything i can help you with?`,
               trigger: "message"
             },
             {
@@ -178,7 +186,9 @@ class Chatbot extends Component {
             },
             {
               id: "doctorBefore",
-              message: "sure thing ! Just a moment please",
+              message: `sure thing ${
+                this.props.data.username
+              }! Just a moment please`,
               trigger: "showDoctorButton"
             },
             {
@@ -202,8 +212,9 @@ class Chatbot extends Component {
             },
             {
               id: "closeChatbox",
-              message:
-                "Thank you,is there anything else i can help you with ? ",
+              message: `Thank you ${
+                this.props.data.username
+              },is there anything else i can help you with ? `,
               trigger: "message"
             },
             {
@@ -215,6 +226,9 @@ class Chatbot extends Component {
                 }
                 if (value == "2") {
                   return "doctorBefore";
+                }
+                if (value.toLowerCase() == "no") {
+                  return "end";
                 } else {
                   return "6";
                 }
@@ -223,7 +237,9 @@ class Chatbot extends Component {
             },
             {
               id: "end",
-              message: "thank you",
+              message: `thank you ${
+                this.props.data.username
+              }, if you have any questions, you can always ask me later`,
               end: true
             },
             {
@@ -241,6 +257,9 @@ class Chatbot extends Component {
                 }
                 if (value == "2") {
                   return "doctorBefore";
+                }
+                if (value.toLowerCase() == "no") {
+                  return "end";
                 } else {
                   return "Consult";
                 }
@@ -256,6 +275,9 @@ class Chatbot extends Component {
                 }
                 if (value == "2") {
                   return "doctorBefore";
+                }
+                if (value.toLowerCase() == "no") {
+                  return "end";
                 } else {
                   return "normalTalk";
                 }
@@ -264,7 +286,9 @@ class Chatbot extends Component {
             },
             {
               id: "beforeConsult",
-              message: "just ask me what you want to know",
+              message: `Hey ${
+                this.props.data.username
+              }, just ask me what you want to know`,
               trigger: "normalInput"
             },
             {

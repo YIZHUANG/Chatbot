@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link ,withRouter } from "react-router-dom";
 import { reduxForm, Field, formValueSelector } from "redux-form";
 import { connect } from "react-redux";
+
+import { logout } from "../../actions";
 
 import Steppers from "../../common/stepper";
 
@@ -95,11 +97,11 @@ class EditForm extends Component {
   }
 
   render() {
-    console.log(this.props.role);
+
     return (
       <div>
         <div className="signupForm_container">
-          <div>Update your profile</div>
+          <span className="updateProfile">Please update your profile</span>
           <form
             className="signupForm"
             onSubmit={this.props.handleSubmit(this.props.onSubmit)}
@@ -135,9 +137,7 @@ class EditForm extends Component {
               ? this.renderSpecialty()
               : null}
             <div className="btn-group">
-              <Link to="/">
-                <RaisedButton label="Cancel" primary={true} />
-              </Link>
+                <RaisedButton label="Cancel" onClick={()=>this.props.logout(this.props.history)} primary={true} />
               <RaisedButton
                 className="signup_btn"
                 label="Next"
@@ -192,14 +192,17 @@ EditForm = reduxForm({
 })(EditForm);
 
 const selector = formValueSelector("editForm");
-EditForm = connect(state => {
-  // can select values individually
-  const username = selector(state, "username");
-  const role = selector(state, "role");
-  return {
-    username,
-    role
-  };
-})(EditForm);
+EditForm = connect(
+  state => {
+    // can select values individually
+    const username = selector(state, "username");
+    const role = selector(state, "role");
+    return {
+      username,
+      role
+    };
+  },
+  { logout }
+)(EditForm);
 
-export default EditForm;
+export default withRouter(EditForm);

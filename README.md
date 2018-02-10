@@ -1,17 +1,18 @@
-# Health care chat-bot
+## Health care chat-bot
 ## Making this kind of stuff is fun
 
-### On-going
+## On-going
 
-### Demo
+## Demo
 ``
-https://mysterious-eyrie-35636.herokuapp.com
+Demo is [here](https://mysterious-eyrie-35636.herokuapp.com)
 ``
 ``
 After you log in, and update your information, refresh the page manually.
 ``
+## You can use the voice recognition  instead of typing.
 
-### Available list of commands  (doesn't have to be the exact same sentence,  if it doesn't give you what you want, retype the sentence again cause the bot is still at training process)
+## Available list of commands  (doesn't have to be the exact same sentence,  if it doesn't give you what you want, retype the sentence again cause the bot is still at training process)
 ``
 1. I would like to book an appointment  (using credit card number 4242424242424242 to pay)
 ``

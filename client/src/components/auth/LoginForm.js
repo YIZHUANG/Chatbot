@@ -106,7 +106,7 @@ class LoginForm extends Component {
           </form>
           {this.props.loginError}
           <span className="signup_noti">
-            Not a member yet? Join us{" "}
+            Don't have an account yet? Register {" "}
             <Link className="link-to-signup" to="/SignupForm">
               here
             </Link>
