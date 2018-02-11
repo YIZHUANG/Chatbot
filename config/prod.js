@@ -9,5 +9,7 @@ module.exports = {
   googleClientID: process.env.GOOGLE_CLIENT_ID,
   googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
   redirectGoogleCallBack: process.env.GOOGLE_CALL_BACK,
-  apiaiToken:process.env.API_AI
+  apiaiToken:process.env.API_AI,
+  weatherApiKey:process.env.WEATHER_KEY,
+  DataBaseKey:process.env.DATA_KEY
 };

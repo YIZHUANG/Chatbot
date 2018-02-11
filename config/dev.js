@@ -12,5 +12,7 @@ module.exports = {
     "856199866082-b8va5qq3et80p2euabaabmgjt2f9faj2.apps.googleusercontent.com", //with your own
   googleClientSecret: "vO2f87WbUBZEjQCWSe26F-ZM",
   redirectGoogleCallBack: "/api/google/callback",
-  apiaiToken: "d0db09819a424589bc1be9e779b15ff7"
+  apiaiToken: "d0db09819a424589bc1be9e779b15ff7",
+  weatherApiKey:"10c61226c677e3e9a196f55e3c19f36c",
+  DataBaseKey:"5cj3F0nQw4ngucb3XjmYCeWpnnxqshoF"
 };
