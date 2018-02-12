@@ -48,14 +48,13 @@ class LoginForm extends Component {
 
   renderForm() {
     return LoginFields.map(data => (
-      <div key={data.name}>
         <Field
+          key={data.name}
           name={data.name}
           type={data.type}
           label={data.label}
           component={this.renderMaterialForm}
         />
-      </div>
     ));
   }
 
@@ -72,17 +71,8 @@ class LoginForm extends Component {
   render() {
     console.log(this.props.loginError);
     return (
-      <div>
-        <FontIcon
-          onClick={() =>
-            this.setState({ renderChatBox: !this.state.renderChatBox })
-          }
-          className="material-icons"
-          style={{ fontSize: 100 }}
-        >
-          chat bubble outline
-        </FontIcon>
         <div className="loginForm_container">
+          <div>Website is still underConscturction.......</div>
           <form
             onSubmit={this.props.handleSubmit(this.onLogin.bind(this))}
             className="loginForm"
@@ -92,6 +82,7 @@ class LoginForm extends Component {
               className="loginForm_btn"
               label="Log in"
               type="submit"
+              className="loginForm_btn"
               primary={true}
               icon={<PersonAdd />}
             />
@@ -111,9 +102,8 @@ class LoginForm extends Component {
               here
             </Link>
           </span>
+          {this.state.renderChatBox ? this.renderChatbox() : null}
         </div>
-        {this.state.renderChatBox ? this.renderChatbox() : null}
-      </div>
     );
   }
 }

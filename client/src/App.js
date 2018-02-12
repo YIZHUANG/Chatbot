@@ -12,6 +12,7 @@ import LoginForm from "./components/auth/LoginForm";
 import UpdateUser from "./components/user/updateUser";
 import SignupForm from "./components/auth/SignupForm";
 
+import Header from "./common/header";
 import Chatbot from "./components/chatbot/chatbot";
 
 import Redirect from "./common/redirect";
@@ -26,6 +27,7 @@ class App extends Component {
         <Provider store={store}>
           <BrowserRouter>
             <div className="container">
+              <Header />
               <Switch>
                 <Route
                   exact

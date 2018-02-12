@@ -29,23 +29,23 @@ body {
   line-height: 1.6;
   background-image: linear-gradient(to right bottom, var(--color-grey-light-1), var(--color-grey-light-2)); }
 
-.container {
-  max-width: 40%;
-  margin: 15rem auto;
-  box-shadow: var(--shadow-dark);
-  min-height: 100vh; }
-
-.Header {
-  background-color: red; }
+.header {
+  background-color: red;
+  height: 5rem; }
 
 .loginForm_container {
-  box-shadow: var(--color-green-session-color);
-  margin: auto;
+  margin-top: 10rem;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px;
   display: flex;
+  margin-left: 30rem;
   flex-direction: column;
-  background-color: #ffdab9; }
+  width: 500px; }
   .loginForm_container .loginForm {
-    margin: auto; }
+    margin: auto;
+    display: flex;
+    flex-direction: column; }
     .loginForm_container .loginForm .loginForm_btn {
       margin-right: 5px; }
   .loginForm_container .link-to-signup {
