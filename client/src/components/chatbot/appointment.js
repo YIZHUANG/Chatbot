@@ -84,26 +84,10 @@ export default class Appointment extends Component {
           Choose appointment time and location
           <DatePicker hintText="Date Picker" />
           <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
-            <RadioButton
-              key="1"
-              value="Hakaniemi"
-              label="Hakaniemi"
-            />
-            <RadioButton
-              key="2"
-              value="Kamppi"
-              label="Kamppi"
-            />
-            <RadioButton
-              key="3"
-              value="Pasila"
-              label="Pasila"
-            />
-            <RadioButton
-              key="4"
-              value="Espoo"
-              label="Espoo"
-            />
+            <RadioButton key="1" value="Hakaniemi" label="Hakaniemi" />
+            <RadioButton key="2" value="Kamppi" label="Kamppi" />
+            <RadioButton key="3" value="Pasila" label="Pasila" />
+            <RadioButton key="4" value="Espoo" label="Espoo" />
           </RadioButtonGroup>
         </Dialog>
       </div>

@@ -11,7 +11,6 @@ import SliderExampleAxis from "../../common/slider";
 import Dialoge from "../../common/dialog";
 
 export default class DoctorBox extends Component {
-
   showModal = () => {
     this.props.showModal();
   };

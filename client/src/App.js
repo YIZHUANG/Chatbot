@@ -11,7 +11,6 @@ import DashBoard from "./components/DashBoard";
 import LoginForm from "./components/auth/LoginForm";
 import SignupForm from "./components/auth/SignupForm";
 
-import Header from "./common/header";
 import Chatbot from "./components/chatbot/chatbot";
 
 import Redirect from "./common/redirect";
@@ -28,7 +27,6 @@ class App extends Component {
         <Provider store={store}>
           <BrowserRouter>
             <div className="container">
-              <Header />
               <Switch>
                 <Route exact path="/DashBoard" component={DashBoard} />
                 <Route exact path="/SignupForm" component={SignupForm} />

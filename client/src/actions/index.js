@@ -93,7 +93,7 @@ export const updateProfile = ({ role, address }, userId, history) => {
   return dispatch => {
     axios
       .put(`/api/user/${userId}`, { role, address })
-      .then(() =>updateSuccess(dispatch))
+      .then(() => updateSuccess(dispatch))
       .catch();
   };
 };

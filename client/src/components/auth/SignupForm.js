@@ -65,35 +65,34 @@ class SignupForm extends Component {
 
   render() {
     return (
-      <div>
-        <Steppers />
-        <div className="signupForm_container">
-          <form
-            className="signupForm"
-            onSubmit={this.props.handleSubmit(this.onSignUp.bind(this))}
-          >
-            {this.renderForm()}
-            <div className="checkbox">
-              <Field
-                name="agreement"
-                component={this.renderCheckbox}
-                label="Do you agree to your term of service?"
-              />
-            </div>
-            <div className="btn-group">
-              <Link to="/">
-                <RaisedButton label="Cancel" primary={true} />
-              </Link>
-              <RaisedButton
-                className="signup_btn"
-                label="Submit"
-                type="submit"
-                icon={<RemoveRedEye />}
-                primary={true}
-              />
-            </div>
-          </form>
-        </div>
+      <div className="signupForm_container">
+        <form
+          className="signupForm"
+          onSubmit={this.props.handleSubmit(this.onSignUp.bind(this))}
+        >
+          {this.renderForm()}
+          <div className="checkbox">
+            <Field
+              name="agreement"
+              component={this.renderCheckbox}
+              label="Do you agree to your term of service?"
+            />
+          </div>
+          <div className="btn-group">
+            <RaisedButton
+              onClick={() => this.props.onCancel()}
+              label="Cancel"
+              primary={true}
+            />
+            <RaisedButton
+              className="signup_btn"
+              label="Submit"
+              type="submit"
+              icon={<RemoveRedEye />}
+              primary={true}
+            />
+          </div>
+        </form>
       </div>
     );
   }
@@ -109,7 +108,11 @@ const validate = values => {
   });
 
   if (!values["agreement"]) {
-    errors["agreement"] = "You must agree to your term of service";
+    errors["agreement"] = (
+      <span className="agreement_error">
+        "You must agree to your term of service"
+      </span>
+    );
   }
 
   return errors;

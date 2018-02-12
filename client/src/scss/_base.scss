@@ -31,16 +31,9 @@ $bp-medium: 55.5rem;
 
 html {
   box-sizing: border-box;
-  font-size: 72.5%;
 }
 
 body {
-  font-family: "Open Sans";
-  font-weight: 400;
-  line-height: 1.6;
-  background-image: linear-gradient(
-    to right bottom,
-    var(--color-grey-light-1),
-    var(--color-grey-light-2)
-  );
+  line-height: 1;
+  margin: 0;
 }

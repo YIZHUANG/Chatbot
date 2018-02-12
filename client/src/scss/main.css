@@ -20,89 +20,202 @@
   box-sizing: inherit; }
 
 html {
-  box-sizing: border-box;
-  font-size: 72.5%; }
+  box-sizing: border-box; }
 
 body {
-  font-family: "Open Sans";
-  font-weight: 400;
-  line-height: 1.6;
-  background-image: linear-gradient(to right bottom, var(--color-grey-light-1), var(--color-grey-light-2)); }
+  line-height: 1;
+  margin: 0; }
 
-.content_container {
-  margin-top: 3rem;
+.container {
+  width: 100%;
+  margin: auto;
+  padding-top: 4%;
+  padding-bottom: 4%; }
+
+.row {
   display: flex;
-  height: 70vh; }
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center; }
 
-.unKnown {
-  flex: 0 0 30%;
-  background-color: yellow; }
+.row::after {
+  display: table;
+  clear: both;
+  content: ""; }
+
+.col-1 {
+  width: 8.33%; }
+
+.col-2 {
+  width: 16.66%; }
+
+.col-3 {
+  width: 25%; }
+
+.col-4 {
+  width: 33.33%; }
+
+.col-5 {
+  width: 41.66%; }
+
+.col-6 {
+  width: 50%; }
+
+.col-7 {
+  width: 58.33%; }
+
+.col-8 {
+  width: 66.66%; }
+
+.col-9 {
+  width: 75%; }
+
+.col-10 {
+  width: 83.33%; }
+
+.col-11 {
+  width: 91.66%; }
+
+.col-12 {
+  width: 100%; }
+
+* {
+  box-sizing: border-box; }
+
+/*############### Nav bar ############*/
+nav {
+  width: 100%;
+  margin: 0; }
+
+nav ul {
+  background-color: #eee;
+  overflow: hidden;
+  margin: 0;
+  padding: 0; }
+
+ul.topnav li {
+  list-style: none;
+  float: left; }
+
+ul.topnav li.topnav-right {
+  float: right; }
+
+ul.topnav li a {
+  display: block;
+  text-decoration: none;
+  min-height: 16px;
+  text-align: center;
+  padding: 14px;
+  text-transform: uppercase;
+  color: #666; }
+
+ul.topnav li a:hover {
+  background-color: #0080ff;
+  color: #fff; }
+
+ul.topnav li.dropdownIcon {
+  display: none; }
+
+/*##### Custom styles #########*/
+#section-1-gradient {
+  background: #076dff;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#076dff, #65a5ff);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#076dff, #65a5ff);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#076dff, #65a5ff);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#076dff, #65a5ff);
+  /* Standard syntax */ }
+
+div.box {
+  text-align: center;
+  margin: 24px;
+  padding: 36px 24px 40px 24px;
+  border-radius: 7px;
+  background-color: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px 0 rgba(0, 0, 0, 0.1); }
+
+div.slopeIcon img {
+  display: block;
+  margin: auto;
+  box-shadow: -2px -2px 20px 2px rgba(0, 0, 0, 0.15), 2px 2px 17px 2px black; }
+
+button {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #0069ff;
+  padding: 15px 60px;
+  display: block;
+  text-align: center;
+  margin: 5px;
+  border-radius: 7px; }
+
+button.learnMore {
+  display: block;
+  margin: auto; }
+
+div.leftSide-col {
+  margin-left: 30%;
+  display: flex;
+  flex-direction: column; }
+
+div.rightSide-col {
+  margin-left: 15%; }
+
+h1.large {
+  color: #fff;
+  font-size: 56px;
+  margin: 0;
+  line-height: 70px; }
+
+h1.section2Header {
+  font-size: 65px;
+  text-align: center; }
+
+form h2 {
+  color: #fff; }
+
+input[type="text"] {
+  font-size: 20px;
+  width: 400px;
+  min-width: 100px;
+  padding: 5px;
+  border-radius: 7px; }
 
 .loginForm_container {
-  flex: 0 0 40%; }
-
-.dialogFlow {
-  flex: 0 0 30%;
-  background-color: green; }
-
-.header {
-  background-color: red;
-  height: 5rem; }
-
-.footer {
-  background-color: blue;
-  height: 10rem; }
-
-.loginForm_container {
-  border: 1px solid;
-  padding: 10px;
-  box-shadow: 5px;
-  display: flex;
-  flex-direction: column;
-  width: 500px; }
-  .loginForm_container .loginForm_title {
-    margin: auto; }
-  .loginForm_container .normalLogin {
-    margin: auto;
+  margin-left: 13rem; }
+  .loginForm_container .loginForm {
+    display: flex;
+    flex-direction: column; }
+  .loginForm_container .button_group {
+    display: flex;
     margin-top: 1rem;
     margin-bottom: 1rem; }
-  .loginForm_container .googleLogin {
-    margin: auto; }
-  .loginForm_container .loginForm {
-    margin: auto;
+  .loginForm_container .loginForm_btn {
+    margin-right: 1rem; }
+  .loginForm_container .login_fail {
+    color: red; }
+  .loginForm_container .signup_noti {
+    margin-top: 1rem; }
+  .loginForm_container .login_text {
     display: flex;
     flex-direction: column; }
   .loginForm_container .link-to-signup {
-    text-decoration: none; }
-  .loginForm_container .signup_noti {
-    font-size: 1.4rem;
-    margin: auto; }
+    text-decoration: underline;
+    color: blue; }
 
 .signupForm_container {
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  background-color: #ffff99; }
-  .signupForm_container .signupForm {
-    margin: auto; }
-    .signupForm_container .signupForm .signup_btn {
-      float: right; }
-  .signupForm_container .checkbox {
-    margin-top: 1rem; }
+  margin-left: 13rem; }
   .signupForm_container .btn-group {
+    display: flex;
     margin-top: 1rem; }
-  .signupForm_container .link-to-signup {
-    text-decoration: none; }
-  .signupForm_container .file_upload {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;
-    align-items: center; }
-  .signupForm_container .specialty {
-    display: flex;
-    flex-direction: column; }
+  .signupForm_container .signup_btn {
+    margin: auto; }
+  .signupForm_container .agreement_error {
+    color: red; }
 
 .review_container {
   margin: auto;

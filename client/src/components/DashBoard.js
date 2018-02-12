@@ -14,10 +14,17 @@ import Chatbot from "./chatbot/chatbot";
 
 import UpdateUser from "./user/updateUser.js";
 
+import LogoutIcon from "material-ui-icons/ExitToApp";
+import List, { ListItem, ListItemText, ListItemIcon } from "material-ui/List";
+import AppBar from "material-ui/AppBar";
+import Toolbar from "material-ui/Toolbar";
+import IconButton from "material-ui/IconButton";
+import MenuIcon from "material-ui-icons/Menu";
+
 class DashBoard extends Component {
   constructor(props) {
     super(props);
-    this.state = { open: false, renderChatBox: false };
+    this.state = { open: true, renderChatBox: false };
   }
 
   handleToggle = () => this.setState({ open: !this.state.open });
@@ -42,7 +49,10 @@ class DashBoard extends Component {
       this.props.history.push("/");
     }
 
-    if (this.props.auth.user&&this.props.auth.user.address != nextProps.auth.user.address) {
+    if (
+      this.props.auth.user &&
+      this.props.auth.user.address != nextProps.auth.user.address
+    ) {
       this.props.fetchUser();
     }
   }
@@ -52,16 +62,14 @@ class DashBoard extends Component {
       <div>
         {" "}
         <RaisedButton label="Open Drawer" onClick={this.handleToggle} />
-        <Drawer
-          docked={false}
-          width={200}
-          open={this.state.open}
-          onRequestChange={open => this.setState({ open })}
-        >
-          <MenuItem onClick={this.handleClose}>Dashboard</MenuItem>
-          <MenuItem onClick={() => this.props.logout(this.props.history)}>
-            Log out
-          </MenuItem>
+        <Drawer width={200} open={this.state.open}>
+          <List>
+            <ListItem
+              primaryText="Log out"
+              leftIcon={<LogoutIcon />}
+              onClick={() => this.props.logout(this.props.history)}
+            />
+          </List>
         </Drawer>
       </div>
     );
@@ -76,7 +84,7 @@ class DashBoard extends Component {
       return <CircularProgress />;
     }
 
-    if (!this.props.auth.profile&&!this.props.auth.user.address) {
+    if (!this.props.auth.profile && !this.props.auth.user.address) {
       return <UpdateUser />;
     }
 

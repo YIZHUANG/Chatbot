@@ -72,7 +72,7 @@ export default class Message extends Component {
 
   render() {
     const { text, response } = this.state;
-    console.log(this.state.response)
+    console.log(this.state.response);
     return (
       <div style={{ width: "100%" }}>
         <table>

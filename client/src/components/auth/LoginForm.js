@@ -6,11 +6,13 @@ import { signIn, fetchUser } from "../../actions";
 
 import { withRouter } from "react-router-dom";
 
+import Card, { CardActions, CardHeader, CardContent } from "material-ui/Card";
+import Avatar from "material-ui/Avatar";
+import AccountCircleIcon from "material-ui-icons/AccountCircle";
 import FlatButton from "material-ui/FlatButton";
 import FontIcon from "material-ui/FontIcon";
 import ActionAndroid from "material-ui/svg-icons/action/android";
 import TextField from "material-ui/TextField";
-import Header from "../Header";
 import RaisedButton from "material-ui/RaisedButton";
 import PersonAdd from "material-ui/svg-icons/social/person-add";
 import Divider from "material-ui/Divider";
@@ -18,12 +20,6 @@ import Divider from "material-ui/Divider";
 import LoginFields from "../../assets/loginFields";
 
 class LoginForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { renderChatBox: false };
-  }
-
-
   renderMaterialForm({ input, label, meta: { error, touched } }) {
     return (
       <TextField
@@ -41,55 +37,51 @@ class LoginForm extends Component {
 
   renderForm() {
     return LoginFields.map(data => (
-        <Field
-          key={data.name}
-          name={data.name}
-          type={data.type}
-          label={data.label}
-          component={this.renderMaterialForm}
-        />
+      <Field
+        class="inputbox"
+        key={data.name}
+        name={data.name}
+        type={data.type}
+        label={data.label}
+        component={this.renderMaterialForm}
+      />
     ));
   }
 
-
   render() {
-    console.log(this.props.loginError);
     return (
-        <div className="loginForm_container">
-          <div className="loginForm_title">Log in form is here.......</div>
-          <form
-            onSubmit={this.props.handleSubmit(this.onLogin.bind(this))}
-            className="loginForm"
-          >
-            {this.renderForm()}
-            <div className="normalLogin">
+      <div className="loginForm_container">
+        <form
+          onSubmit={this.props.handleSubmit(this.onLogin.bind(this))}
+          className="loginForm"
+        >
+          {this.renderForm()}
+          <div className="button_group">
             <RaisedButton
               className="loginForm_btn"
               label="Log in"
               type="submit"
-              className="loginForm_btn"
               primary={true}
-              icon={<PersonAdd />}
             />
-          </div>
-          <div className="googleLogin">
             <a href="http://health-care-chat-bot.herokuapp.com/api/google">
-              <RaisedButton
-                label="Google Log in"
-                primary={true}
-                icon={<PersonAdd />}
-              />
+              <RaisedButton label="Google Log in" primary={true} />
             </a>
           </div>
-          </form>
-          {this.props.loginError}
+        </form>
+        <div className="login_text">
+          <span className="login_fail">{this.props.loginError}</span>
           <span className="signup_noti">
-            Don't have an account yet? Register {" "}
-            <Link className="link-to-signup" to="/SignupForm">
+            Don't have an account yet? Register{" "}
+            <a
+              href=""
+              onClick={() => this.setState({ renderSignupForm: true })}
+              className="link-to-signup"
+            >
               here
-            </Link>
+            </a>
           </span>
         </div>
+      </div>
     );
   }
 }
