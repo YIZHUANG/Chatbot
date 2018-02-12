@@ -1,50 +1,43 @@
-## Health care chat-bot
+## Health care smart chat-bot 
 ## Making this kind of stuff is fun
 
-## On-going   Author : YI ZHUANG (lead developer)  Jose
+## On-going   Authors : YI ZHUANG (lead dev AKA Machine)  Jose Zapata (Human)
 
 ## Demo
 
 Demo is [here](https://health-care-chat-bot.herokuapp.com)
 
-``
-After you log in, and update your information, and start talking to the chatbot
-``
-## You can use the voice recognition  instead of typing.
-
-## Available list of commands  (doesn't have to be the exact same sentence,  if it doesn't give you what you want, retype the sentence again cause the bot is still at training process)
-``
-1. I would like to book an appointment  (using credit card number 4242424242424242 to pay)
-``
-``
-2. I would like to talk to a docotor
-``
-``
-3. See a list of commands
-``
-4. I am not feeling well
-``
-``
-5. Or just type anything you want and see what happen
-``
-
 ### Installation process  
 
-``
+
+``npm install `` in root folder and the client folder as well
+
+if you have concurrently installed globally ``npm run dev ``   in the root folder
+
+if not
+`` npm run server `` in root folder and ``npm start `` in client folder
+
 Use your own config. (sensitive stuff). check the config folder
 ``
 
 ``
-1.  npm install  both in the root folder and the client folder
+After you log in, update your information, and start talking to the chatbot
 ``
+## Features
 
-``
-2. (if you have concurrently install globally) npm run dev   in the root folder
-``
+## You can use the voice recognition  instead of typing.
 
-``
-(if not have concurrently install globally)
-npm run server in the root folder.
+## example input  (natural language flow, no need to specify, bot uses AI to learn and train it self)
 
-npm start in the client folder
-``
+1.I would like to book an appointment  (using credit card number 4242424242424242 to pay)
+
+2. I would like to talk to a doctor
+
+3. See a list of commands
+
+4. I don't feel well
+
+5. ask it anything :D  
+
+
+
