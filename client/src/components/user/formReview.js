@@ -2,7 +2,7 @@ import React from "react";
 
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { signUp, updateProfile } from "../../actions";
+import { signUp, fetchUser, updateProfile } from "../../actions";
 
 import ActionFlightTakeoff from "material-ui/svg-icons/action/flight-takeoff";
 import RaisedButton from "material-ui/RaisedButton";
@@ -17,10 +17,12 @@ const FormReview = ({
   signUp,
   signupError,
   updateProfile,
-  user
+  user,
+  fetchUser
 }) => {
   const { role, address } = formValues;
-  console.log(user._id);
+  console.log(user);
+
   const list = (
     <div>
       <label className="review_label">address</label>
@@ -29,6 +31,7 @@ const FormReview = ({
       <div className="review_text">{role}</div>
     </div>
   );
+
   return (
     <div className="review_container">
       <div className="review_content">
@@ -63,6 +66,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { signUp, updateProfile })(
+export default connect(mapStateToProps, { signUp, updateProfile, fetchUser })(
   withRouter(FormReview)
 );

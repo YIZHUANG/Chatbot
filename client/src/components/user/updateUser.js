@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import EditForm from "./editForm";
 import FormReview from "./formReview";
 import { reduxForm } from "redux-form";
+import { connect } from "react-redux";
+
+import { fetchUser, logout } from "../../actions";
 
 class UpdateUser extends Component {
   constructor(props) {
@@ -26,6 +29,13 @@ class UpdateUser extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  const {user} = state.auth;
+  return {
+    user
+  };
+}
+
 export default reduxForm({
   form: "editForm"
-})(UpdateUser);
+})(connect(mapStateToProps, { fetchUser })(UpdateUser));

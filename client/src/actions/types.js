@@ -4,3 +4,4 @@ export const LOGIN_FAIL = "login_fail";
 export const SIGNUP_SUCCESS = "signup_sucess";
 export const FETCH_USER = "fetch_user";
 export const SIGNUP_FAIL = "signupfail";
+export const PROFILE_UPDATED = "profileupdated";

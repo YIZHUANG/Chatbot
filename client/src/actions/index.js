@@ -6,7 +6,8 @@ import {
   LOGIN_FAIL,
   SIGNUP_SUCCESS,
   FETCH_USER,
-  SIGNUP_FAIL
+  SIGNUP_FAIL,
+  PROFILE_UPDATED
 } from "./types";
 
 const ROOT_URL = "";
@@ -92,17 +93,14 @@ export const updateProfile = ({ role, address }, userId, history) => {
   return dispatch => {
     axios
       .put(`/api/user/${userId}`, { role, address })
-      .then(() => {
-        fetchUser();
-        history.push("/DashBoard");
-      })
+      .then(() =>updateSuccess(dispatch))
       .catch();
   };
 };
 
-const updateSucess = dispatch => {
+const updateSuccess = dispatch => {
   dispatch({
-    type: FETCH_USER
+    type: PROFILE_UPDATED
   });
 };
 

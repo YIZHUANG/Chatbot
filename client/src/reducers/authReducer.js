@@ -4,14 +4,16 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   SIGNUP_SUCCESS,
-  SIGNUP_FAIL
+  SIGNUP_FAIL,
+  PROFILE_UPDATED
 } from "../actions/types";
 
 const INITIAL_STATE = {
   authenticated: false,
   user: false,
   loginError: "",
-  signupError: ""
+  signupError: "",
+  profile: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -37,6 +39,11 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         signupError: "account already exist or check your internet connect"
+      };
+    case PROFILE_UPDATED:
+      return {
+        ...state,
+        profile: true
       };
     default:
       return state;

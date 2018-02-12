@@ -29,25 +29,49 @@ body {
   line-height: 1.6;
   background-image: linear-gradient(to right bottom, var(--color-grey-light-1), var(--color-grey-light-2)); }
 
+.content_container {
+  margin-top: 3rem;
+  display: flex;
+  height: 70vh; }
+
+.unKnown {
+  flex: 0 0 30%;
+  background-color: yellow; }
+
+.loginForm_container {
+  flex: 0 0 40%; }
+
+.dialogFlow {
+  flex: 0 0 30%;
+  background-color: green; }
+
 .header {
   background-color: red;
   height: 5rem; }
 
+.footer {
+  background-color: blue;
+  height: 10rem; }
+
 .loginForm_container {
-  margin-top: 10rem;
   border: 1px solid;
   padding: 10px;
   box-shadow: 5px;
   display: flex;
-  margin-left: 30rem;
   flex-direction: column;
   width: 500px; }
+  .loginForm_container .loginForm_title {
+    margin: auto; }
+  .loginForm_container .normalLogin {
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem; }
+  .loginForm_container .googleLogin {
+    margin: auto; }
   .loginForm_container .loginForm {
     margin: auto;
     display: flex;
     flex-direction: column; }
-    .loginForm_container .loginForm .loginForm_btn {
-      margin-right: 5px; }
   .loginForm_container .link-to-signup {
     text-decoration: none; }
   .loginForm_container .signup_noti {

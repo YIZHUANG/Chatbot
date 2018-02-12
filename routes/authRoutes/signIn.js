@@ -22,7 +22,7 @@ module.exports = (app, passport) => {
     "/api/google/callback",
     passport.authenticate("google"),
     (req, res) => {
-      res.redirect("https://health-care-chat-bot.herokuapp.com/DashBoard");
+      res.redirect("https://health-care-chat-bot.herokuapp.com/update");
     }
   );
 

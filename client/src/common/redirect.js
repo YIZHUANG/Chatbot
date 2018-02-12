@@ -6,7 +6,7 @@ import LinearProgress from "material-ui/LinearProgress";
 class Redirect extends Component {
   constructor(props) {
     super(props);
-    this.state = { counter: 3 };
+    this.state = { counter: 1 };
   }
   componentWillUnmount() {
     clearInterval(this.timer);
@@ -18,6 +18,7 @@ class Redirect extends Component {
       this.props.history.push("/DashBoard");
     }
   }
+
   componentWillUpdate() {
     if (this.state.counter <= 0) {
       this.props.history.push("/DashBoard");
@@ -34,9 +35,7 @@ class Redirect extends Component {
     console.log(this.state.counter);
     return (
       <div>
-        <span className="Logging">
-        Logging in .......
-      </span>
+        <span className="Logging">Logging in .......</span>
         <LinearProgress mode="indeterminate" />
       </div>
     );

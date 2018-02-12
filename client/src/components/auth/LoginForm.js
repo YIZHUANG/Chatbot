@@ -4,6 +4,8 @@ import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
 import { signIn, fetchUser } from "../../actions";
 
+import { withRouter } from "react-router-dom";
+
 import FlatButton from "material-ui/FlatButton";
 import FontIcon from "material-ui/FontIcon";
 import ActionAndroid from "material-ui/svg-icons/action/android";
@@ -21,15 +23,6 @@ class LoginForm extends Component {
     this.state = { renderChatBox: false };
   }
 
-  componentWillMount() {
-    this.props.fetchUser();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.user.username) {
-      this.props.history.push("/DashBoard");
-    }
-  }
 
   renderMaterialForm({ input, label, meta: { error, touched } }) {
     return (
@@ -58,26 +51,18 @@ class LoginForm extends Component {
     ));
   }
 
-  renderChatbox() {
-    return (
-      <iframe
-        width="350"
-        height="430"
-        src="https://console.dialogflow.com/api-client/demo/embedded/2c5fa8f0-94ed-469e-bcf8-c7a4f66180ec"
-      />
-    );
-  }
 
   render() {
     console.log(this.props.loginError);
     return (
         <div className="loginForm_container">
-          <div>Website is still underConscturction.......</div>
+          <div className="loginForm_title">Log in form is here.......</div>
           <form
             onSubmit={this.props.handleSubmit(this.onLogin.bind(this))}
             className="loginForm"
           >
             {this.renderForm()}
+            <div className="normalLogin">
             <RaisedButton
               className="loginForm_btn"
               label="Log in"
@@ -86,14 +71,16 @@ class LoginForm extends Component {
               primary={true}
               icon={<PersonAdd />}
             />
+          </div>
+          <div className="googleLogin">
             <a href="http://health-care-chat-bot.herokuapp.com/api/google">
               <RaisedButton
-                className="loginForm_btn"
                 label="Google Log in"
                 primary={true}
                 icon={<PersonAdd />}
               />
             </a>
+          </div>
           </form>
           {this.props.loginError}
           <span className="signup_noti">
@@ -102,7 +89,6 @@ class LoginForm extends Component {
               here
             </Link>
           </span>
-          {this.state.renderChatBox ? this.renderChatbox() : null}
         </div>
     );
   }
@@ -132,4 +118,4 @@ function mapStateToProps(state) {
 export default reduxForm({
   form: "loginForm",
   validate
-})(connect(mapStateToProps, { signIn, fetchUser })(LoginForm));
+})(connect(mapStateToProps, { signIn, fetchUser })(withRouter(LoginForm)));

@@ -1,22 +1,29 @@
-
-
 .loginForm_container {
-  margin-top: 10rem;
   border: 1px solid;
   padding: 10px;
   box-shadow: 5px;
   display: flex;
-  margin-left: 30rem;
   flex-direction: column;
-  width:500px;
+  width: 500px;
+
+  .loginForm_title {
+    margin: auto;
+  }
+
+  .normalLogin {
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .googleLogin {
+    margin: auto;
+  }
 
   .loginForm {
     margin: auto;
     display: flex;
     flex-direction: column;
-    .loginForm_btn {
-      margin-right: 5px;
-    }
   }
 
   .link-to-signup {
