@@ -1,0 +1,38 @@
+.auth_content {
+  display: flex;
+  .auth_content {
+    .review_container {
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      .review_content {
+        margin: auto;
+        .review_btn_cancel {
+          display: flex;
+          margin-right: 10px;
+        }
+      }
+      .review_entries {
+        .review_label {
+          font-size: 1.4rem;
+          margin-bottom: 3rem;
+        }
+        .review_text {
+          font-size: 1.2rem;
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+}
+.drawer {
+  flex: 0 0 20%;
+}
+
+.api_table {
+  flex: 0 0 30%;
+}
+
+.chat_bot {
+  flex: 0 0 40%;
+}

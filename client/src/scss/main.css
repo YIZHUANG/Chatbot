@@ -1,0 +1,121 @@
+:root {
+  --color-image-container: #236e5d;
+  --color-grey-secondary: #a2a2a2;
+  --color-grey-primary: #d7d7d7;
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f0eeee;
+  --color-grey-dark-3: #999;
+  --font-weight-header: 700;
+  --p-color-primary: #111;
+  --p-color-secondary: #111;
+  --color-green-session-color: #008080; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box; }
+
+body {
+  line-height: 1;
+  margin: 0;
+  font-family: 'Josefin Sans'; }
+
+.auth_content {
+  display: flex; }
+  .auth_content .auth_content .review_container {
+    margin: auto;
+    display: flex;
+    flex-direction: column; }
+    .auth_content .auth_content .review_container .review_content {
+      margin: auto; }
+      .auth_content .auth_content .review_container .review_content .review_btn_cancel {
+        display: flex;
+        margin-right: 10px; }
+    .auth_content .auth_content .review_container .review_entries .review_label {
+      font-size: 1.4rem;
+      margin-bottom: 3rem; }
+    .auth_content .auth_content .review_container .review_entries .review_text {
+      font-size: 1.2rem;
+      margin-bottom: 30px; }
+
+.drawer {
+  flex: 0 0 20%; }
+
+.api_table {
+  flex: 0 0 30%; }
+
+.chat_bot {
+  flex: 0 0 40%; }
+
+.loginForm_container {
+  margin-left: 13rem; }
+  .loginForm_container .loginForm {
+    display: flex;
+    flex-direction: column; }
+  .loginForm_container .button_group {
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 1rem; }
+  .loginForm_container .loginForm_btn {
+    margin-right: 1rem; }
+  .loginForm_container .login_fail {
+    color: red; }
+  .loginForm_container .signup_noti {
+    margin-top: 1rem; }
+  .loginForm_container .login_text {
+    display: flex;
+    flex-direction: column; }
+  .loginForm_container .link-to-signup {
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer; }
+  .loginForm_container .link-to-signup:hover {
+    color: red; }
+
+.signupForm_container {
+  margin-left: 13rem; }
+  .signupForm_container .btn-group {
+    display: flex;
+    margin-top: 1rem; }
+  .signupForm_container .signup_btn {
+    margin: auto; }
+  .signupForm_container .agreement_error {
+    color: red; }
+
+.Logging {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 4rem; }
+
+.updateProfile {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 2rem; }
+
+.openDoctorChat {
+  margin-top: 10px; }
+
+.redirect {
+  margin-top: 10rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column; }
+  .redirect .Logging_spinner {
+    text-align: center; }
+
+#botFrame {
+  box-shadow: 10px 10px 105px black;
+  border-radius: 11px;
+  border: 2px solid #0b0101; }
+
+.flex-container {
+  display: flex;
+  flex-direction: row; }

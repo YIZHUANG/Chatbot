@@ -1,0 +1,80 @@
+
+.loginForm_container {
+  margin-left: 13rem;
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+  }
+  .button_group {
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .loginForm_btn {
+    margin-right: 1rem;
+  }
+  .login_fail {
+    color: red;
+  }
+  .signup_noti {
+    margin-top: 1rem;
+  }
+  .login_text {
+    display: flex;
+    flex-direction: column;
+  }
+  .link-to-signup {
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+  }
+  .link-to-signup:hover {
+    color: red;
+  }
+}
+.signupForm_container {
+  margin-left: 13rem;
+  .btn-group {
+    display: flex;
+    margin-top: 1rem;
+  }
+  .signup_btn {
+    margin: auto;
+  }
+  .agreement_error {
+    color: red;
+  }
+}
+.Logging {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 4rem;
+}
+.updateProfile {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+.openDoctorChat {
+  margin-top: 10px;
+}
+.redirect {
+  margin-top: 10rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  .Logging_spinner {
+    text-align: center;
+  }
+}
+// iFrame
+#botFrame {
+  box-shadow: 10px 10px 105px black;
+  border-radius: 11px;
+  border: 2px solid #0b0101;
+}
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
