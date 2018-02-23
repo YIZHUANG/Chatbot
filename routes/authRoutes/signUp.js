@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-require("../../model/user"); //import the schema
-const User = mongoose.model("user"); //import the schema
+require("../../model/user");
+const User = mongoose.model("user");
 var passport = require("passport"),
-  LocalStrategy = require("passport-local").Strategy; //define Strategy;
+  LocalStrategy = require("passport-local").Strategy;
 
 module.exports = (app, passport) => {
   app.post("/api/signUp", (req, res) => {

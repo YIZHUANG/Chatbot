@@ -52,18 +52,18 @@ class Home extends Component {
   render() {
     return (
       <div className="content_container">
-        <div class="container" id="section-1-gradient">
-          <div class="row">
-            <div class="col-6">
-              <div class="leftSide-col">
-                <h1 class="large">HEALTHCARE</h1>
-                <h1 class="large">YOU DESERVE</h1>
+        <div className="container" id="section-1-gradient">
+          <div className="row">
+            <div className="col-6">
+              <div className="leftSide-col">
+                <h1 className="large">HEALTHCARE</h1>
+                <h1 className="large">YOU DESERVE</h1>
               </div>
               {this.renderAuthForm()}
             </div>
-            <div class="col-6">
-              <div class="rightSide-col">
-                <div class="videoContainer">
+            <div className="col-6">
+              <div className="rightSide-col">
+                <div className="videoContainer">
                   <iframe id="botFrame"
                     width="450"
                     height="650"

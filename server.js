@@ -1,19 +1,16 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieSession = require("cookie-session");
-
 const morgan = require("morgan");
 const mongoose = require("mongoose");
-
-const passport = require("passport"); //tell express to make use of cookies
+const passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 
-const keys = require("./config/keys"); //where all the secrets / keys are stored.
+const keys = require("./config/keys");
 
-mongoose.connect(keys.mongoURL); // use your own URL.
+mongoose.connect(keys.mongoURL);
 
 const app = express();
-
 const cors = require("cors");
 
 app.use(
@@ -22,7 +19,7 @@ app.use(
     keys: [keys.cookieKey]
   })
 );
-app.use(morgan("dev")); // this allows every request to be displayed on the console for easier debug.
+app.use(morgan("dev"));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(
@@ -34,15 +31,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./model/user");
-
 require("./services/passport")(app, passport);
-
 require("./routes/authRoutes/signUp")(app, passport);
 require("./routes/authRoutes/signIn")(app, passport);
-
 require("./routes/chatbot/chatbot")(app);
-
-require("./services/chatbot")(app); //not in used, just for testing.
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

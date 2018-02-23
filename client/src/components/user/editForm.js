@@ -16,7 +16,7 @@ import DatePicker from "material-ui/DatePicker";
 import RemoveRedEye from "material-ui/svg-icons/image/remove-red-eye";
 import FlatButton from "material-ui/FlatButton";
 
-import SignupFields from "../../assets/signupFields";
+import updateFields from "../../assets/signupFields";
 import LoginFields from "../../assets/loginFields";
 
 class EditForm extends Component {
