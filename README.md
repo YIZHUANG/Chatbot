@@ -5,7 +5,7 @@
 
 ## this is a proof of concept prototype application
 
-## This demo is from the old version, does not work that well. Will push the new version soon.
+## demo
 
 Demo is [here](https://health-care-chat-bot.herokuapp.com)
 
@@ -52,12 +52,14 @@ Use your own config. (sensitive stuff). check the config folder
 
 1.I would like to book an appointment  (using credit card number 4242424242424242 to pay)
 
-2. I would like to talk to a doctor
+2. Show me a list of appointments. (It will show you your appointments)
 
-3. See a list of commands
+3. I would like to talk to a doctor
 
-4. I don't feel well
+4. See a list of commands
 
-5. ask it anything :D
+5. I don't feel well
 
-## if the project were to continue, everything must be re-made from scratch because the main node package we are using has its own limitation.
+6. I am feeling sick
+
+7. ask it anything :D
